@@ -1,0 +1,12 @@
+[build]
+  command = "pnpm build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# SvelteKit fingerprints these files, so they can be cached for good.
+[[headers]]
+  for = "/_app/immutable/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
