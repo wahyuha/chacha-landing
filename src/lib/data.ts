@@ -183,7 +183,7 @@ export const faqs = [
 	},
 	{
 		q: 'Kalau ada mitra Chacha lain buka dekat lokasiku?',
-		a: 'Tidak akan dalam radius 1 km. Sebelum menerima mitra baru, kami cek dulu siapa saja yang sudah ada di area itu.'
+		a: 'Tidak. Kami yang mengatur jarak antar mitra, 1 sampai 10 km tergantung areanya. Sebelum menerima mitra baru, kami cek dulu siapa saja yang sudah ada di area itu.'
 	},
 	{
 		q: 'Berapa lama sampai booth tiba di lokasi?',
@@ -215,7 +215,7 @@ export const promo = {
 export const ticker = [
 	'Tanpa royalti',
 	'Booth tiba 7–14 hari kerja',
-	'Tidak ada mitra lain dalam 1 km',
+	'Jarak antar mitra kami atur, 1–10 km',
 	'Resep diajarkan sampai bisa',
 	'Bahan baku untuk 100 cup pertama',
 	'Boleh tanya dulu, tanpa komitmen'
