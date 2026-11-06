@@ -10,10 +10,8 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Ticker from '$lib/components/Ticker.svelte';
 	import Kit from '$lib/components/Kit.svelte';
-	import Proof from '$lib/components/Proof.svelte';
 	import StickyCta from '$lib/components/StickyCta.svelte';
 	import PosterShare from '$lib/components/PosterShare.svelte';
-	import RealOutlet from '$lib/components/RealOutlet.svelte';
 	import TeamChat from '$lib/components/TeamChat.svelte';
 	import { SITE_URL, faqs, packages, waLink } from '$lib/data';
 
@@ -60,13 +58,12 @@
 <Nav cta={{ label: 'Tanya Dulu', href: waLink('Halo Kak, saya mau tanya-tanya soal kemitraan Chacha.'), external: true }} />
 <main>
 	<Hero />
-	<RealOutlet />
+	<!-- Hidden for now: RealOutlet (Foto asli dari outlet kami) and Proof (Bikin Ketagihan, Kata mereka yang sudah jualan). Import and place them here to bring them back. -->
 	<Ticker />
 	<Kit />
 	<Packages />
 	<PosterShare />
 	<Calculator />
-	<Proof />
 	<MenuSection />
 	<CupShowcase />
 	<TeamChat />
