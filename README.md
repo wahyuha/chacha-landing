@@ -15,7 +15,11 @@ pnpm dev          # http://localhost:5173
 pnpm build        # static output in build/ (deploy to any static host / CDN)
 ```
 
-## Before launch
+## Hosting
+
+Netlify project `chachatea` builds `feature/landing-page` on every push (settings in `netlify.toml`). The domain is registered at Hostinger, with the apex A record set to `75.2.60.5` and `www` as a CNAME to `chachatea.netlify.app`.
+
+## Still to fill in
 
 - **Tea descriptions**: `teas` in `src/lib/data.ts` need checking by someone who has tasted the teas.
 - **Outlets, delivery apps, social accounts**: fill `outlets`, `orderLinks` and `socials` in `src/lib/data.ts`. Empty lists stay hidden; with no outlets, the home page asks people to message on WhatsApp.
