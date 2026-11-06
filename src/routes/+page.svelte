@@ -192,7 +192,7 @@
 			<div class="flex flex-col items-start gap-6" use:reveal>
 				<img src="/img/site/logo-stacked-white.webp" alt="" width="140" height="161" loading="lazy" class="h-auto w-30 md:w-36" data-reveal />
 				<h2 class="display text-[clamp(2.1rem,4.4vw,3.75rem)] leading-[1.1]" data-reveal>From nature to your cup.</h2>
-				<p class="max-w-[44ch] text-[17px] leading-7 text-mist md:text-[18px] md:leading-[30px]" data-reveal>Good tea brings people closer. Teh kami diseduh segar setiap hari, supaya enak dinikmati bareng siapa saja.</p>
+				<p class="max-w-[44ch] text-[17px] leading-7 text-mist md:text-[18px] md:leading-[30px]" data-reveal>Good tea brings people closer. Jadi pesan dua: satu buat kamu, satu buat orang yang lagi kamu kangenin.</p>
 			</div>
 			<div class="arch-left aspect-[1.08] overflow-hidden">
 				<img src="/img/site/hands.webp" alt="Dua tangan memegang cup hijau Chacha" width="1200" height="1111" loading="lazy" class="size-full object-cover" />
