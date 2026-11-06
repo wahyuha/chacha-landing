@@ -17,7 +17,9 @@ pnpm build        # static output in build/ (deploy to any static host / CDN)
 
 ## Hosting
 
-Netlify project `chachatea` builds `feature/landing-page` on every push (settings in `netlify.toml`). The domain is registered at Hostinger, with the apex A record set to `75.2.60.5` and `www` as a CNAME to `chachatea.netlify.app`.
+Netlify project `chachatea` builds `main` on every push (settings in `netlify.toml`). This folder is linked to it, so `netlify status` and other CLI commands work here.
+
+Both domains are registered at Hostinger, each with its apex A record set to `75.2.60.5` and `www` as a CNAME to `chachatea.netlify.app`. `chachatea.id` is the primary domain; `www.chachatea.id` and `chacha.id` redirect to it.
 
 ## Still to fill in
 
