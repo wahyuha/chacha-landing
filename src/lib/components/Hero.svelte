@@ -59,7 +59,7 @@
 
 		<div class="relative lg:col-span-6">
 			<div bind:this={frame} class="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-cream-raised sm:aspect-[5/5] lg:aspect-[4/5]" style="clip-path: inset(0 round 28px)">
-				<img bind:this={photo} src="/img/g-interior.webp" alt="Interior outlet Chacha: counter kayu oak berlampu hangat, lampu gantung hijau sage dan meja pembeli" class="size-full object-cover object-[28%_50%]" fetchpriority="high" />
+				<img bind:this={photo} src="/img/site/outlet-hero-1500.webp" srcset="/img/site/outlet-hero-800.webp 800w, /img/site/outlet-hero-1500.webp 1500w" sizes="(min-width: 1024px) 50vw, 100vw" alt="Outlet Chacha: counter putih dengan logo Chacha dan lampu LED, dinding kayu, meja dan bangku pembeli, serta poster Chacha di dinding" class="size-full object-cover object-center" fetchpriority="high" />
 			</div>
 			<!-- price sticker -->
 			<div data-sticker class="absolute -left-3 top-6 grid size-32 place-items-center rounded-full bg-gold text-deep-forest shadow-[0_18px_40px_-14px_rgba(122,94,34,.7)] md:-left-8 md:size-40">

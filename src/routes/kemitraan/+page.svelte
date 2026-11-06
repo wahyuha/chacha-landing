@@ -44,7 +44,7 @@
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<link rel="canonical" href={url} />
-	<link rel="preload" as="image" href="/img/g-interior.webp" fetchpriority="high" />
+	<link rel="preload" as="image" href="/img/site/outlet-hero-1500.webp" imagesrcset="/img/site/outlet-hero-800.webp 800w, /img/site/outlet-hero-1500.webp 1500w" imagesizes="(min-width: 1024px) 50vw, 100vw" fetchpriority="high" />
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="id_ID" />
 	<meta property="og:title" content={title} />

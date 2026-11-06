@@ -158,6 +158,10 @@ if (wants('photos')) {
 			await sharp(`${SRC}/${src}.jpg`).resize({ width: w, withoutEnlargement: true }).webp({ quality: 82 }).toFile(`${OUT}/${name}-${w}.webp`);
 		}
 	}
+	// Kemitraan hero: the real outlet photo.
+	for (const w of [1500, 800]) {
+		await sharp(`${SRC}/outlet-hero.jpg`).resize({ width: w }).webp({ quality: 84 }).toFile(`${OUT}/outlet-hero-${w}.webp`);
+	}
 	// Hands: crop away the poster's headline, logo and the white strips on its edges.
 	await sharp(`${SRC}/poster-hands.jpg`)
 		.extract({ left: 60, top: 300, width: 1480, height: 1370 })
