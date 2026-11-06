@@ -24,3 +24,6 @@ vite.config.ts.timestamp-*
 
 # Local tooling
 .claude/
+
+# Third-party reference photos (local concept only, never commit or deploy)
+/static/ref/

@@ -23,10 +23,10 @@ export function initMotion() {
 	};
 }
 
-export function scrollToId(id: string) {
+export function scrollToId(id: string, offset = -8) {
 	const el = document.getElementById(id);
 	if (!el) return;
-	if (lenis) lenis.scrollTo(el, { offset: -8, duration: 1.4 });
+	if (lenis) lenis.scrollTo(el, { offset, duration: 1.4 });
 	else el.scrollIntoView({ behavior: 'smooth' });
 }
 

@@ -1,149 +1,274 @@
 <script lang="ts">
-	import { Tween } from 'svelte/motion';
-	import { cubicOut } from 'svelte/easing';
+	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
-	import { Check, MessageCircle, TabletSmartphone, Ruler } from '@lucide/svelte';
+	import { cubicOut } from 'svelte/easing';
+	import { Check, X, MessageCircle, Move3d, ArrowRight } from '@lucide/svelte';
 	import Eyebrow from './Eyebrow.svelte';
-	import BoothArt from './BoothArt.svelte';
-	import { packages, rupiah, waLink } from '$lib/data';
-	import { reveal, splitWords } from '$lib/motion';
+	import { offers, rupiah, waLink } from '$lib/data';
+	import { reducedMotion, reveal } from '$lib/motion';
 
 	let active = $state(1);
-	let pkg = $derived(packages[active]);
-	const price = new Tween(packages[1].price ?? 0, { duration: 700, easing: cubicOut });
-	$effect(() => {
-		if (pkg.price) price.target = pkg.price;
+	const offer = $derived(offers[active]);
+
+	// Turntable: three path-traced booth angles (src/routes/booth) stand in for a 3D spin. Drag (or wait) to rotate.
+	const views = [
+		{ src: '/img/cut/booth-front.webp', label: 'Depan' },
+		{ src: '/img/cut/booth-left.webp', label: 'Kiri' },
+		{ src: '/img/cut/booth-right.webp', label: 'Kanan' }
+	];
+	let view = $state(0);
+	let dragX: number | null = null;
+	let paused = $state(false);
+
+	// parallax tilt
+	let stage: HTMLDivElement;
+	let tilt = $state({ x: 0, y: 0 });
+
+	onMount(() => {
+		if (reducedMotion()) return;
+		const id = setInterval(() => {
+			if (!paused && active === 1) view = (view + 1) % views.length;
+		}, 3200);
+		return () => clearInterval(id);
 	});
 
-	const msg = $derived(
-		pkg.price
-			? `Halo Chacha, saya tertarik paket ${pkg.name} (${pkg.type}). Boleh minta proposalnya?`
-			: 'Halo Chacha, saya tertarik booth Mall / Custom. Boleh jadwalkan survei lokasi?'
-	);
-
-	function onKey(e: KeyboardEvent) {
-		if (e.key === 'ArrowRight' || e.key === 'ArrowDown') active = (active + 1) % packages.length;
-		else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') active = (active + packages.length - 1) % packages.length;
-		else return;
-		e.preventDefault();
-		(document.getElementById(`pkg-tab-${active}`) as HTMLElement)?.focus();
+	function onDown(e: PointerEvent) {
+		dragX = e.clientX;
+		paused = true;
 	}
+	function onMove(e: PointerEvent) {
+		const r = stage.getBoundingClientRect();
+		tilt = { x: ((e.clientX - r.left) / r.width - 0.5) * 2, y: ((e.clientY - r.top) / r.height - 0.5) * 2 };
+		if (dragX === null) return;
+		const dx = e.clientX - dragX;
+		if (Math.abs(dx) > 50) {
+			view = (view + (dx < 0 ? 1 : views.length - 1)) % views.length;
+			dragX = e.clientX;
+		}
+	}
+	function onUp() {
+		dragX = null;
+	}
+	const layer = (d: number) => `transform: translate3d(${tilt.x * d * 14}px, ${tilt.y * d * 8}px, 0)`;
+
+	// equipment cluster for Paket 1
+	const cluster = [
+		{ id: 'dispenser', x: 50, y: 52, h: 46, z: 3, d: 1 },
+		{ id: 'teko-takar', x: 22, y: 64, h: 28, z: 4, d: 1.6 },
+		{ id: 'shaker', x: 78, y: 66, h: 26, z: 4, d: 1.6 },
+		{ id: 'botol-uht', x: 33, y: 40, h: 34, z: 2, d: 0.6 },
+		{ id: 'timbangan', x: 68, y: 40, h: 30, z: 2, d: 0.6 },
+		{ id: 'jigger', x: 40, y: 80, h: 16, z: 5, d: 2.2 },
+		{ id: 'botol-susu', x: 61, y: 82, h: 20, z: 5, d: 2.2 },
+		{ id: 'termometer', x: 86, y: 44, h: 18, z: 1, d: 0.4 },
+		{ id: 'saringan', x: 14, y: 42, h: 12, z: 1, d: 0.4 }
+	];
 </script>
 
-<section id="paket" class="bg-cream py-24 md:py-36">
-	<div class="wrap">
-		<div class="grid gap-8 md:grid-cols-12 md:items-end" use:reveal>
-			<div class="md:col-span-7">
-				<Eyebrow>Paket kemitraan</Eyebrow>
-				<h2 use:splitWords class="display mt-6 text-[clamp(2.1rem,4.4vw,3.5rem)] leading-[1.04] text-forest">Pilih booth, sisanya kami siapkan</h2>
+<section id="paket" class="on-dark grain relative overflow-hidden bg-deep-forest py-20 text-white md:py-28">
+	<!-- soft light pools -->
+	<div class="pointer-events-none absolute -left-40 top-20 size-[520px] rounded-full bg-sage/25 blur-[120px]"></div>
+	<div class="pointer-events-none absolute -right-20 bottom-0 size-[420px] rounded-full bg-gold/15 blur-[120px]"></div>
+
+	<div class="wrap relative">
+		<div class="flex flex-col justify-between gap-6 md:flex-row md:items-end" use:reveal>
+			<div>
+				<Eyebrow dark>Paket kemitraan</Eyebrow>
+				<h2 class="display mt-5 text-[clamp(2.1rem,4.4vw,3.6rem)] leading-[1.02]" data-reveal>
+					Mau mulai <em class="text-gold">dari mana?</em>
+				</h2>
 			</div>
-			<p class="text-[16px] leading-[1.7] text-ink-muted md:col-span-5" data-reveal>
-				Semua paket sudah termasuk booth, peralatan, bahan baku awal, cup custom, training, dan <strong class="font-semibold text-forest">POS lengkap dengan perangkat</strong>. Tanpa royalti.
+			<p class="max-w-[42ch] text-[16px] leading-relaxed text-white/70" data-reveal>
+				Ada dua cara. Kalau kamu sudah punya tempat jualan, cukup ambil peralatannya. Kalau mulai dari nol, booth-nya ikut kami kirim.
 			</p>
 		</div>
 
-		<!-- selector -->
-		<div class="mt-14 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3" role="tablist" aria-label="Tipe booth" tabindex="-1" onkeydown={onKey}>
-			{#each packages as p, i}
-				<button
-					id="pkg-tab-{i}"
-					role="tab"
-					aria-selected={active === i}
-					aria-controls="pkg-panel"
-					tabindex={active === i ? 0 : -1}
-					onclick={() => (active = i)}
-					class="relative rounded-[16px] border p-4 text-left transition-[border-color,background-color,box-shadow] duration-500 ease-(--ease-soft) md:p-5
-					{active === i ? 'border-forest bg-cream-raised shadow-[0_16px_40px_-24px_rgba(29,90,69,.55)]' : 'border-linen hover:border-sage hover:bg-cream-raised/60'}"
-				>
-					{#if p.featured}
-						<span class="label absolute -top-2.5 right-3 rounded-full bg-deep-forest px-2.5 py-1 text-[9px] text-gold">Paling Laris</span>
-					{/if}
-					<span class="label block text-[10px] {active === i ? 'text-sage-text' : 'text-ink-muted'}">{p.type}</span>
-					<span class="display mt-2 block text-[24px] font-semibold leading-none text-ink md:text-[28px]">{p.name}</span>
-					{#if p.was}<span class="mt-3 block text-[12px] text-ink-muted line-through">{rupiah(p.was)}</span>{/if}
-					<span class="price block text-[14px] text-forest md:text-[16px] {p.was ? '' : 'mt-3'}">{p.price ? rupiah(p.price) : 'Setelah survei'}</span>
-				</button>
-			{/each}
-		</div>
+		<div class="mt-12 grid gap-6 lg:grid-cols-12 lg:gap-8">
+			<!-- stage -->
+			<div
+				bind:this={stage}
+				role="img"
+				aria-label={active === 1 ? `Booth Chacha tampak ${views[view].label.toLowerCase()}, 110 × 55 × 80 cm` : 'Peralatan minuman Paket 1'}
+				class="stage relative aspect-[4/3.4] touch-pan-y select-none overflow-hidden rounded-[28px] lg:sticky lg:top-24 lg:col-span-7 lg:aspect-auto lg:h-[min(620px,calc(100svh-8.5rem))] lg:self-start {active === 1 ? 'cursor-grab active:cursor-grabbing' : ''}"
+				onpointerdown={onDown}
+				onpointermove={onMove}
+				onpointerup={onUp}
+				onpointerleave={() => {
+					onUp();
+					tilt = { x: 0, y: 0 };
+					paused = false;
+				}}
+			>
+				<!-- turntable platform -->
+				<div class="absolute bottom-[9%] left-1/2 h-[16%] w-[78%] -translate-x-1/2" style={layer(0.3)}>
+					<div class="absolute inset-0 rounded-[50%] bg-[radial-gradient(closest-side,rgba(212,176,98,.28),rgba(212,176,98,.06)_70%,transparent)]"></div>
+					<svg class="absolute inset-0 size-full" viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true" fill="none">
+						<ellipse cx="100" cy="20" rx="94" ry="17" stroke="#D4B062" stroke-opacity=".45" vector-effect="non-scaling-stroke" />
+						<ellipse class="march" cx="100" cy="20" rx="72" ry="12" stroke="#D4B062" stroke-opacity=".35" stroke-dasharray="3 5" vector-effect="non-scaling-stroke" />
+					</svg>
+					<div class="absolute inset-x-[18%] bottom-[30%] h-[30%] rounded-[50%] bg-black/45 blur-xl"></div>
+				</div>
 
-		<!-- panel -->
-		<div id="pkg-panel" role="tabpanel" aria-labelledby="pkg-tab-{active}" class="mt-4 grid overflow-hidden rounded-[24px] border bg-cream-raised transition-shadow duration-700 lg:grid-cols-2 {pkg.featured ? 'border-sage shadow-glow' : 'border-linen'}">
-			<div class="relative aspect-[4/3] overflow-hidden bg-[#F3ECE0] lg:aspect-auto lg:min-h-[560px]">
-				{#key pkg.id}
-					<div class="absolute inset-0" in:fade={{ duration: 600 }} out:fade={{ duration: 400 }}>
-						{#if pkg.photo}
-							<img src="{pkg.img}.webp" alt="Render booth Chacha {pkg.type}" class="size-full object-cover" />
-						{:else}
-							<div class="size-full" role="img" aria-label="Tampak depan booth Chacha {pkg.type}, {pkg.size}">
-								<BoothArt id={pkg.id} />
+				{#if active === 1}
+					<div class="absolute inset-0" in:fade={{ duration: 500 }} out:fade={{ duration: 250 }}>
+						{#each views as v, i}
+							<img
+								src={v.src}
+								alt=""
+								draggable="false"
+								class="view pointer-events-none absolute bottom-[17%] left-1/2 max-h-[70%] w-auto max-w-[88%] object-contain {view === i ? 'on' : ''}"
+								style="--d:{i - view}"
+							/>
+						{/each}
+						<!-- dimension callouts on the front view -->
+						{#if view === 0}
+							<svg class="dims pointer-events-none absolute inset-0 size-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" in:fade={{ duration: 400, delay: 300 }}>
+								<g stroke="#D4B062" stroke-width="0.25" vector-effect="non-scaling-stroke">
+									<line x1="26.6" x2="73.4" y1="86" y2="86" />
+									<line x1="26.6" x2="26.6" y1="84.5" y2="87.5" />
+									<line x1="73.4" x2="73.4" y1="84.5" y2="87.5" />
+									<line x1="77" x2="77" y1="44" y2="78" />
+									<line x1="75.8" x2="78.2" y1="44" y2="44" />
+									<line x1="75.8" x2="78.2" y1="78" y2="78" />
+								</g>
+							</svg>
+							<span class="absolute bottom-[8.4%] left-1/2 -translate-x-1/2 rounded-full bg-deep-forest px-2.5 py-0.5 text-[11px] font-bold tracking-wider text-gold" in:fade={{ delay: 400 }}>110 cm</span>
+							<span class="absolute right-[17%] top-[58%] rounded-full bg-deep-forest px-2.5 py-0.5 text-[11px] font-bold tracking-wider text-gold" in:fade={{ delay: 400 }}>80 cm</span>
+						{/if}
+						<!-- foreground cups -->
+						<img src="/img/cut/cup-forest-front.webp" alt="" class="float pointer-events-none absolute bottom-[6%] left-[5%] h-[30%] w-auto drop-shadow-[0_20px_20px_rgba(0,0,0,.45)]" style={layer(2)} />
+						<img src="/img/cut/cup-clear.webp" alt="" class="float pointer-events-none absolute bottom-[5%] right-[6%] h-[28%] w-auto drop-shadow-[0_20px_20px_rgba(0,0,0,.4)]" style="{layer(2.2)};animation-delay:-2s" />
+					</div>
+					<!-- view switcher -->
+					<div class="absolute left-4 top-4 flex items-center gap-1 rounded-full bg-black/25 p-1 backdrop-blur" role="tablist" aria-label="Sudut booth">
+						{#each views as v, i}
+							<button role="tab" aria-selected={view === i} class="rounded-full px-3 py-1 text-[12px] font-semibold transition-colors {view === i ? 'bg-white text-deep-forest' : 'text-white/75 hover:text-white'}" onclick={() => ((view = i), (paused = true))}>{v.label}</button>
+						{/each}
+					</div>
+					<p class="absolute right-4 top-4 hidden items-center gap-1.5 rounded-full bg-black/25 px-3 py-1.5 text-[12px] text-white/80 backdrop-blur sm:flex"><Move3d size={14} />Geser untuk memutar</p>
+				{:else}
+					<div class="absolute inset-0" in:fade={{ duration: 500 }} out:fade={{ duration: 250 }}>
+						{#each cluster as c, i}
+							<img
+								src="/img/kit/{c.id}.webp"
+								alt=""
+								draggable="false"
+								class="pointer-events-none absolute w-auto -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,.4)]"
+								style="left:{c.x}%;top:{c.y}%;height:{c.h}%;z-index:{c.z};{layer(c.d)}"
+								in:fly={{ y: 40, duration: 700, delay: 60 * i, easing: cubicOut }}
+							/>
+						{/each}
+						<p class="absolute left-4 top-4 rounded-full bg-black/25 px-3 py-1.5 text-[12px] font-semibold text-white/85 backdrop-blur">19 item peralatan · tanpa booth</p>
+					</div>
+				{/if}
+			</div>
+
+			<!-- offers -->
+			<div class="flex flex-col gap-4 lg:col-span-5" role="radiogroup" aria-label="Pilih paket">
+				{#each offers as o, i}
+					<div
+						role="radio"
+						tabindex="0"
+						aria-checked={active === i}
+						onclick={() => (active = i)}
+						onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), (active = i))}
+						class="offer relative cursor-pointer overflow-hidden rounded-[24px] p-6 text-left transition-all duration-500 md:p-7
+						{active === i ? 'bg-white text-ink shadow-[0_30px_60px_-30px_rgba(0,0,0,.6)]' : 'bg-white/[.06] text-white ring-1 ring-white/12 hover:bg-white/[.1]'}"
+					>
+						{#if o.featured}
+							<span class="absolute right-5 top-5 rounded-full bg-gold px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-deep-forest">Paling lengkap</span>
+						{/if}
+						<p class="text-[12px] font-bold uppercase tracking-[0.16em] {active === i ? 'text-sage-text' : 'text-white/60'}">{o.name}</p>
+						<h3 class="mt-1 text-[28px] font-extrabold leading-tight tracking-tight">{o.title}</h3>
+						<p class="mt-2 text-[14.5px] leading-relaxed {active === i ? 'text-ink-muted' : 'text-white/65'}">{o.blurb}</p>
+
+						<div class="mt-5 flex items-end justify-between gap-3">
+							{#if o.price}
+								<p class="text-[30px] font-extrabold tracking-tight {active === i ? 'text-forest' : ''}">{rupiah(o.price)}</p>
+							{:else}
+								<div>
+									<p class="price-ph whitespace-nowrap text-[24px] font-extrabold tracking-tight sm:text-[30px] {active === i ? 'text-forest' : ''}" aria-label="Harga segera diumumkan">Rp ●●.●●●.●●●</p>
+									<p class="text-[12px] {active === i ? 'text-ink-muted' : 'text-white/55'}">Harga & promo bulan ini kami kirim lewat WhatsApp</p>
+								</div>
+							{/if}
+						</div>
+
+						{#if active === i}
+							<div transition:fly={{ y: 10, duration: 400 }}>
+								<ul class="mt-5 grid gap-2 border-t border-linen pt-5 text-[14.5px]">
+									{#each o.includes as it}
+										<li class="flex items-start gap-2.5"><span class="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-sage-soft text-forest"><Check size={13} strokeWidth={3} /></span>{it}</li>
+									{/each}
+									{#each o.excludes as it}
+										<li class="flex items-start gap-2.5 text-ink-muted line-through decoration-ink/30"><span class="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-cream-raised text-ink-muted"><X size={12} strokeWidth={3} /></span>{it}</li>
+									{/each}
+								</ul>
+								<a href={waLink(o.message)} target="_blank" rel="noopener" onclick={(e) => e.stopPropagation()} class="btn btn-primary cta-shine mt-6 w-full !h-14 !text-[16px]">
+									<MessageCircle size={18} />Tanya {o.name}
+								</a>
 							</div>
 						{/if}
 					</div>
-				{/key}
-				<div class="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-cream-raised/90 px-3.5 py-2 text-[13px] font-semibold text-forest backdrop-blur">
-					<Ruler size={15} />{pkg.size}
-				</div>
-			</div>
+				{/each}
 
-			<div class="flex flex-col p-6 md:p-10">
-				{#key pkg.id}
-					<div in:fly={{ y: 14, duration: 500, delay: 80 }}>
-						<p class="label text-sage-text">{pkg.type}</p>
-						<div class="mt-2 flex flex-wrap items-end justify-between gap-4">
-							<h3 class="display text-[44px] font-semibold leading-none text-ink">{pkg.name}</h3>
-							{#if pkg.price}
-								<div class="text-right">
-									{#if pkg.was}<p class="text-[14px] text-ink-muted"><span class="line-through">{rupiah(pkg.was)}</span> <span class="ml-1 rounded-full bg-gold px-2 py-0.5 text-[11px] font-bold text-deep-forest">Hemat {rupiah(pkg.was - (pkg.price ?? 0))}</span></p>{/if}
-									<p class="price text-[28px] leading-none text-forest">{rupiah(price.current)}</p>
-								</div>
-							{:else}
-								<p class="text-[15px] font-semibold text-forest">Harga setelah survei lokasi</p>
-							{/if}
-						</div>
-						<p class="mt-5 text-[16px] leading-relaxed text-ink/85">{pkg.booth}.</p>
-					</div>
-				{/key}
-
-				<dl class="mt-8 grid gap-5 border-t border-linen pt-8 text-[15px]">
-					<div class="grid grid-cols-[110px_1fr] gap-4">
-						<dt class="label pt-0.5 text-[10px] text-ink-muted">Peralatan</dt>
-						<dd class="flex flex-wrap gap-1.5">
-							{#each pkg.equipment as e (e)}
-								<span class="rounded-full bg-sage-soft px-3 py-1 text-[13px] text-sage-text" in:fade={{ duration: 300 }}>{e}</span>
-							{/each}
-						</dd>
-					</div>
-					<div class="grid grid-cols-[110px_1fr] gap-4">
-						<dt class="label pt-0.5 text-[10px] text-ink-muted">Bahan & cup</dt>
-						<dd class="text-ink/85">{pkg.stock}</dd>
-					</div>
-					<div class="grid grid-cols-[110px_1fr] gap-4">
-						<dt class="label pt-0.5 text-[10px] text-ink-muted">Marketing</dt>
-						<dd class="text-ink/85">{pkg.marketing}</dd>
-					</div>
-					<div class="grid grid-cols-[110px_1fr] gap-4">
-						<dt class="label pt-0.5 text-[10px] text-ink-muted">Training</dt>
-						<dd class="text-ink/85">{pkg.training}</dd>
-					</div>
-				</dl>
-
-				<div class="mt-8 flex items-start gap-4 rounded-[16px] bg-deep-forest p-5 text-cream">
-					<span class="grid size-11 shrink-0 place-items-center rounded-full bg-gold/15 text-gold"><TabletSmartphone size={22} strokeWidth={1.6} /></span>
-					<div>
-						<p class="text-[15px] font-semibold">POS {pkg.pos.join(' + ')}</p>
-						<p class="mt-1 text-[13px] text-cream/70">Gratis langganan 6 bulan pertama. Stok, penjualan & pengingat restock dalam satu tablet.</p>
-					</div>
-				</div>
-
-				<div class="mt-auto flex flex-col gap-3 pt-8 sm:flex-row sm:items-center">
-					<a href={waLink(msg)} target="_blank" rel="noopener" class="btn btn-primary group">
-						<MessageCircle size={18} />
-						{pkg.price ? `Tanya paket ${pkg.name}` : 'Jadwalkan survei'}
-					</a>
-					<p class="flex items-center gap-2 text-[13px] text-ink-muted"><Check size={15} class="text-sage" />Tanpa royalti · zona 1 km</p>
-				</div>
+				<a href={waLink('Halo Chacha, saya butuh booth custom / kiosk mall. Boleh konsultasi?')} target="_blank" rel="noopener" class="group flex items-center justify-between gap-4 rounded-[20px] border border-dashed border-white/25 px-5 py-4 text-[14px] text-white/80 transition-colors hover:border-gold hover:text-white">
+					<span><strong class="text-white">Mau booth lebih besar atau buka di mall?</strong> Ceritakan saja, kami buatkan.</span>
+					<ArrowRight size={18} class="shrink-0 text-gold transition-transform group-hover:translate-x-1" />
+				</a>
 			</div>
 		</div>
-		<p class="mt-5 text-[13px] text-ink-muted">Harga belum termasuk ongkir. Isi paket dapat disesuaikan saat konsultasi.</p>
 	</div>
 </section>
+
+<style>
+	.stage {
+		background:
+			radial-gradient(120% 80% at 50% 0%, rgba(106, 154, 126, 0.35), transparent 60%),
+			linear-gradient(180deg, #1b4d3d 0%, #123a2e 100%);
+		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+	}
+	.view {
+		opacity: 0;
+		transform: translateX(calc(-50% + var(--d) * 18%)) scale(0.92) rotateY(calc(var(--d) * -25deg));
+		filter: drop-shadow(0 30px 30px rgba(0, 0, 0, 0.45)) blur(2px);
+		transition:
+			opacity 0.7s ease,
+			transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+			filter 0.7s ease;
+	}
+	.view.on {
+		opacity: 1;
+		transform: translateX(-50%) scale(1);
+		filter: drop-shadow(0 30px 30px rgba(0, 0, 0, 0.45));
+	}
+	.march {
+		animation: march 4s linear infinite;
+	}
+	@keyframes march {
+		to {
+			stroke-dashoffset: -80;
+		}
+	}
+	.float {
+		animation: float 6s ease-in-out infinite;
+	}
+	@keyframes float {
+		50% {
+			translate: 0 -10px;
+		}
+	}
+	.dims line {
+		stroke-dasharray: 100;
+		stroke-dashoffset: 100;
+		animation: draw 1.2s 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	}
+	@keyframes draw {
+		to {
+			stroke-dashoffset: 0;
+		}
+	}
+	.price-ph {
+		letter-spacing: 0.02em;
+		opacity: 0.85;
+	}
+</style>

@@ -1,35 +1,40 @@
 @import 'tailwindcss';
 @import '@fontsource/cormorant-garamond/500.css';
 @import '@fontsource/cormorant-garamond/600.css';
-@import '@fontsource/cormorant-garamond/500-italic.css';
+@import '@fontsource/cormorant-garamond/500-italic.css'; /* booth and poster artwork only */
 @import '@fontsource-variable/plus-jakarta-sans';
+@import '@fontsource-variable/jost';
+@import '@fontsource-variable/jost/wght-italic.css';
 
-/* Chacha Design System tokens (light only for the landing page). */
+/* Chacha design system tokens (light theme). Older names map onto the system's colours. */
 @theme {
-	--color-cream: #ffffff; /* page ground: white for a cleaner, more modern read */
-	--color-cream-raised: #f6f5f1;
-	--color-linen: #e7e4dc;
-	--color-ink: #26302b;
-	--color-ink-muted: #5e6a63;
-	--color-sage: #6a9a7e;
-	--color-on-sage: #10231c;
-	--color-sage-soft: #e3eee6;
-	--color-sage-text: #426553;
-	--color-forest: #1d5a45;
+	--color-cream: #f7f4ee; /* ivory */
+	--color-cream-raised: #ffffff; /* raised */
+	--color-paper: #fcfaf8; /* background of the photos sliced from the printed menu */
+	--color-linen: #e6dfd4; /* stone */
+	--color-ink: #1a2e2a;
+	--color-ink-muted: #5a6964;
+	--color-sage: #819a89; /* wash: decoration only */
+	--color-on-sage: #0f302b;
+	--color-sage-soft: #e3eae6; /* mist-soft */
+	--color-sage-text: #4f6a62; /* wash-text */
+	--color-mist: #c9d5cf;
+	--color-forest: #164942; /* chacha-green */
 	--color-on-forest: #ffffff;
-	--color-deep-forest: #143f31;
-	--color-night: #0e2c22;
-	--color-gold: #d4b062;
-	--color-gold-text: #7a5e22;
-	--color-oak: #c4915e;
+	--color-deep-forest: #0f302b; /* pine */
+	--color-night: #0a2420;
+	--color-gold: #c8a165; /* brass */
+	--color-gold-text: #86622c;
+	--color-oak: #c49a6c;
 
+	--font-display: 'Jost Variable', Jost, Futura, 'Century Gothic', system-ui, sans-serif;
 	--font-serif: 'Cormorant Garamond', 'Cormorant', Georgia, serif;
 	--font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
 	--radius-md: 12px;
-	--radius-lg: 20px;
+	--radius-lg: 24px;
 
-	--shadow-glow: 0 12px 32px rgba(196, 145, 94, 0.18), 0 2px 0 rgba(196, 145, 94, 0.12);
+	--shadow-glow: 0 14px 36px rgba(200, 161, 101, 0.22);
 	--ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -67,24 +72,37 @@
 
 @layer components {
 	.label {
+		font-family: var(--font-display);
 		font-size: 12px;
 		line-height: 16px;
-		font-weight: 600;
-		letter-spacing: 0.18em;
+		font-weight: 500;
+		letter-spacing: 0.32em;
 		text-transform: uppercase;
 	}
-	/* Headlines: bold, tight sans like an IG post; italic words switch to the serif as an accent. */
+	/* Headlines: Jost, geometric and open like the wordmark. */
 	.display {
-		font-family: var(--font-sans);
-		font-weight: 800;
-		letter-spacing: -0.035em;
+		font-family: var(--font-display);
+		font-weight: 500;
+		letter-spacing: 0;
+		text-wrap: balance;
 	}
 	.display em,
 	.serif {
-		font-family: var(--font-serif);
+		font-family: var(--font-display);
 		font-style: italic;
-		font-weight: 500;
-		letter-spacing: -0.01em;
+		font-weight: 400;
+	}
+	.tagline {
+		font-family: var(--font-display);
+		font-weight: 300;
+		letter-spacing: 0.14em;
+	}
+	/* The outlet's signage shape: a large rounded top corner. */
+	.arch-right {
+		border-radius: var(--radius-lg) clamp(96px, 16vw, 200px) var(--radius-lg) var(--radius-lg);
+	}
+	.arch-left {
+		border-radius: clamp(96px, 16vw, 200px) var(--radius-lg) var(--radius-lg) var(--radius-lg);
 	}
 	.price {
 		font-weight: 700;

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { ridge, CLOUD } from '$lib/art';
+	import { LOGO } from '$lib/brand/logo-paths';
 
 	// Front elevations drawn to the brand: oak slats, cream panels, sage & forest, a warm LED line.
 	let { id }: { id: string } = $props();
@@ -31,10 +32,13 @@
 </script>
 
 {#snippet wordmark(x: number, y: number, size: number, color: string, sub = true, subColor = color)}
-	<text x={x} y={y} text-anchor="middle" fill={color} font-size={size} font-weight="650" letter-spacing={size * 0.16} font-family="Plus Jakarta Sans Variable, Plus Jakarta Sans, sans-serif">CHACHA</text>
-	{#if sub}
-		<text x={x} y={y + size * 0.62} text-anchor="middle" fill={subColor} font-size={size * 0.3} font-weight="600" letter-spacing={size * 0.1} font-family="Plus Jakarta Sans Variable, Plus Jakarta Sans, sans-serif">FRESH &amp; MILK TEA</text>
-	{/if}
+	<!-- brand logo centred on x, capitals sitting on baseline y; `size` is the old font size, so the width stays the same -->
+	{@const cap = size * 0.74}
+	{@const s = cap / LOGO.cap}
+	<g transform="translate({x - (LOGO.width * s) / 2} {y - cap}) scale({s})">
+		<path d={LOGO.word} fill={color} />
+		{#if sub}<path d={LOGO.sub} fill={subColor} />{/if}
+	</g>
 {/snippet}
 
 {#snippet tablet(x: number, y: number)}

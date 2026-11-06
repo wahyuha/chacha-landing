@@ -70,10 +70,10 @@
 		<div class="relative z-10 md:col-span-5" use:reveal>
 			<Eyebrow dark>Desain cup</Eyebrow>
 			<h2 class="display mt-6 text-[clamp(2.1rem,4.2vw,3.4rem)] leading-[1.04]">
-				Pegunungan, awan <em class="italic text-gold">&amp;</em> melati dalam satu genggaman
+				Cup yang bikin pembeli <em class="italic text-gold">mengeluarkan HP</em>
 			</h2>
 			<p class="mt-6 max-w-[40ch] text-[16px] leading-[1.75] text-cream/75" data-reveal>
-				Setiap cup Chacha membawa ilustrasi kebun teh di kaki gunung, digambar dengan garis emas. Cup yang membuat pembeli berhenti, memotret, lalu kembali lagi.
+				Ilustrasinya kebun teh di kaki gunung, digambar dengan garis emas. Buat kamu, itu promosi gratis setiap kali ada yang memotretnya.
 			</p>
 			<div class="mt-9 inline-flex rounded-full border border-cream/15 p-1" role="radiogroup" aria-label="Pilih desain cup" data-reveal>
 				{#each [{ v: 'forest', l: 'Hijau Hutan' }, { v: 'cream', l: 'Krem Pagi' }] as o}
@@ -87,7 +87,7 @@
 					</button>
 				{/each}
 			</div>
-			<p class="mt-5 text-[13px] text-cream/45" data-reveal>Geser untuk melihat 360°</p>
+			<p class="mt-5 text-[13px] text-cream/45" data-reveal>Geser untuk memutar cup</p>
 		</div>
 
 		<div bind:this={stage} class="relative z-10 -mx-5 h-[62svh] min-h-[420px] md:col-span-7 md:mx-0 md:h-[82svh]" onpointermove={onMove} onpointerleave={() => (pointer = { x: 0, y: 0 })} role="img" aria-label="Cup Chacha berputar 360 derajat, desain {variant === 'forest' ? 'hijau hutan' : 'krem pagi'}">
@@ -97,7 +97,7 @@
 					<Scene {variant} {progress} {pointer} />
 				</Canvas>
 			{:else}
-				<img src={variant === 'forest' ? '/img/cup-forest.webp' : '/img/cup-cream.webp'} alt="" class="absolute inset-0 m-auto h-[88%] w-auto object-contain" loading="lazy" />
+				<img src={variant === 'forest' ? '/img/cup-render.webp' : '/img/cup-cream-render.webp'} alt="" class="absolute inset-0 m-auto h-[80%] w-auto object-contain" loading="lazy" />
 			{/if}
 		</div>
 	</div>

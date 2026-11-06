@@ -43,6 +43,8 @@
 		material.map = t.map;
 		material.metalnessMap = t.metal;
 		material.roughness = v === 'forest' ? 0.5 : 0.62;
+		// the studio lighting pushes the cream paper to white; a warm tint keeps it reading as cream
+		material.color.set(v === 'cream' ? '#ece2cf' : '#ffffff');
 		material.needsUpdate = true;
 		invalidate();
 	}

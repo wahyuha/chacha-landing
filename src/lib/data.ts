@@ -1,88 +1,90 @@
-// Placeholder number — replace with the real WhatsApp Business number (country code, no +).
-export const WA_NUMBER = '6281200000000';
+// WhatsApp Business number (country code, no +).
+export const WA_NUMBER = '6282246632200';
+
+export const SITE_URL = 'https://chachatea.id';
 
 export const waLink = (message: string) =>
 	`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
 
-export const rupiah = (n: number) => 'Rp ' + Math.round(n).toLocaleString('id-ID');
+export const rupiah = (n: number) => 'Rp ' + Math.round(n).toLocaleString('id-ID');
 
 export const jutaan = (n: number) =>
 	(n / 1_000_000).toLocaleString('id-ID', { maximumFractionDigits: 1 }) + ' jt';
 
+// ── Menu ──────────────────────────────────────────────────────────────────────
+// Names, prices, best sellers and tea groupings follow the printed menu.
+
+export type Category = 'Milk Tea' | 'Matcha' | 'Fresh Drink';
+
 export type Drink = {
+	slug: string; // image at /img/site/drinks/<slug>.webp
 	name: string;
-	category: 'Milk Tea' | 'Fruit Tea' | 'Signature';
+	category: Category;
+	base?: string; // tea group on the printed menu
 	price: number;
-	note: string;
-	img: string;
-	tint: string;
-	photo?: boolean; // true once a real photo exists at `img`.webp
-	liquid: [string, string, string];
-	extra: 'boba' | 'tiger' | 'matcha' | 'peach' | 'lychee' | 'lemon' | 'jasmine';
+	best?: boolean;
 };
 
+export const categories: Category[] = ['Milk Tea', 'Matcha', 'Fresh Drink'];
+
 export const drinks: Drink[] = [
-	{
-		name: 'Jasmine Milk Tea',
-		category: 'Milk Tea',
-		price: 18000,
-		note: 'Teh melati diseduh segar, susu lembut, wangi yang tertinggal.',
-		img: '/img/menu-jasmine',
-		tint: '#E9DCC8',
-		liquid: ['#E3CBA8', '#D9BC93', '#C9A77A'],
-		extra: 'jasmine'
-	},
-	{
-		name: 'Brown Sugar Milk',
-		category: 'Milk Tea',
-		price: 20000,
-		note: 'Gula aren karamel yang melapisi gelas, susu dingin, boba kenyal.',
-		img: '/img/menu-brownsugar',
-		tint: '#E6D3BD',
-		liquid: ['#E8D5B9', '#D8BC98', '#B98B5E'],
-		extra: 'tiger'
-	},
-	{
-		name: 'Matcha Latte',
-		category: 'Signature',
-		price: 22000,
-		note: 'Matcha pekat di atas susu segar. Pahit manis yang seimbang.',
-		img: '/img/menu-matcha',
-		tint: '#DCE8DF',
-		liquid: ['#7FA24A', '#B9CC8A', '#F4F0E6'],
-		extra: 'matcha'
-	},
-	{
-		name: 'Peach Oolong',
-		category: 'Fruit Tea',
-		price: 18000,
-		note: 'Oolong panggang ringan dengan irisan persik segar.',
-		img: '/img/menu-peach',
-		tint: '#F1DCC6',
-		liquid: ['#F4C58E', '#EDAE70', '#E39A5A'],
-		extra: 'peach'
-	},
-	{
-		name: 'Lychee Jasmine',
-		category: 'Fruit Tea',
-		price: 18000,
-		note: 'Leci utuh dan teh melati. Manis yang bersih, ringan di akhir.',
-		img: '/img/menu-lychee',
-		tint: '#F0DEDA',
-		liquid: ['#F6DCD6', '#EFC7C0', '#E7B3AC'],
-		extra: 'lychee'
-	},
-	{
-		name: 'Lemon Green Tea',
-		category: 'Fruit Tea',
-		price: 15000,
-		note: 'Teh hijau segar, perasan lemon, penyegar paling ringan.',
-		img: '/img/menu-lemon',
-		tint: '#E8E6C8',
-		liquid: ['#EBE4A0', '#DED483', '#CFC267'],
-		extra: 'lemon'
-	}
+	{ slug: 'classic-milk-tea', name: 'Classic Milk Tea', category: 'Milk Tea', base: 'Premium Black Tea', price: 14000, best: true },
+	{ slug: 'classic-jelly-milk-tea', name: 'Classic Jelly Milk Tea', category: 'Milk Tea', base: 'Premium Black Tea', price: 16000 },
+	{ slug: 'premium-oolong-milk-tea', name: 'Premium Oolong Milk Tea', category: 'Milk Tea', base: 'Red Oolong', price: 16000, best: true },
+	{ slug: 'red-oolong-milk-tea', name: 'Red Oolong Milk Tea', category: 'Milk Tea', base: 'Red Oolong', price: 16000 },
+	{ slug: 'jasmine-milk-tea', name: 'Jasmine Milk Tea', category: 'Milk Tea', base: 'Jasmine', price: 14000, best: true },
+	{ slug: 'peach-oolong-milk-tea', name: 'Peach Oolong Milk Tea', category: 'Milk Tea', base: 'Premium Oolong', price: 15000 },
+	{ slug: 'classic-matcha', name: 'Classic Matcha', category: 'Matcha', price: 14000, best: true },
+	{ slug: 'crumble-matcha', name: 'Crumble Matcha', category: 'Matcha', price: 15000, best: true },
+	{ slug: 'coconut-matcha', name: 'Coconut Matcha', category: 'Matcha', price: 15000 },
+	{ slug: 'ube-cream-matcha', name: 'Ube Cream Matcha', category: 'Matcha', price: 15000 },
+	{ slug: 'caramel-matcha', name: 'Caramel Matcha', category: 'Matcha', price: 15000 },
+	{ slug: 'creamy-matcha', name: 'Creamy Matcha', category: 'Matcha', price: 14000 },
+	{ slug: 'jasmine-tea', name: 'Jasmine Tea', category: 'Fresh Drink', price: 12000 },
+	{ slug: 'peach-oolong-tea', name: 'Peach Oolong Tea', category: 'Fresh Drink', price: 12000, best: true },
+	{ slug: 'mango-tea', name: 'Mango Tea', category: 'Fresh Drink', price: 12000 }
 ];
+
+/** Tea shots shown above each menu group. */
+export const teaBases = {
+	'Milk Tea': [
+		{ img: 'premium-black-tea', name: 'Premium Black Tea', leaf: 'orange pekoe' },
+		{ img: 'red-oolong', name: 'Red Oolong', leaf: 'roasted oolong' },
+		{ img: 'jasmine', name: 'Jasmine', leaf: 'jasmine tea' },
+		{ img: 'premium-oolong', name: 'Premium Oolong', leaf: 'rolled oolong' }
+	],
+	Matcha: [{ img: 'matcha', name: 'Matcha', leaf: 'green tea powder' }],
+	'Fresh Drink': [{ img: 'premium-oolong', name: 'Premium Oolong', leaf: 'rolled oolong' }]
+};
+
+export const sugarLevels = [
+	{ value: '100%', note: 'Normal' },
+	{ value: '50%', note: 'Less sweet' }
+];
+
+export const iceLevels = [
+	{ value: 'Normal', note: 'Regular ice' },
+	{ value: 'Less', note: 'Less ice' }
+];
+
+/**
+ * Tea selection on the home page.
+ * TASTING SIGN-OFF: leaf types and brew colours come from the menu and photos, but the aroma and
+ * taste sentences have not been checked by someone who has tasted these teas.
+ */
+export const teas = [
+	{ img: 'four-seasons', name: 'Four Seasons Oolong', desc: 'Oolong daun gulung, seduhannya jingga keemasan. Wangi bunganya segar, dengan rasa manis di akhir.' },
+	{ img: 'premium-oolong', name: 'Premium Oolong', desc: 'Oolong daun gulung, seduhannya kuning madu. Wanginya lembut dan rasanya ringan.' },
+	{ img: 'red-oolong', name: 'Red Oolong', desc: 'Oolong panggang, seduhannya merah gelap. Aroma panggangnya kuat dan rasanya tebal.' },
+	{ img: 'black', name: 'Premium Black Tea', desc: 'Orange pekoe, seduhannya merah tembaga. Rasa tehnya tegas, tetap terasa walau dicampur susu.' },
+	{ img: 'jasmine', name: 'Jasmine', desc: 'Teh melati, seduhannya kuning keemasan. Wangi melatinya muncul duluan, rasanya ringan.' },
+	{ img: 'matcha', name: 'Matcha', desc: 'Bubuk teh hijau, warnanya hijau terang. Rasanya segar dengan pahit tipis di akhir.' }
+];
+
+// Fill these in and the home and menu pages show them. Empty lists stay hidden.
+export const outlets: { name: string; address: string; hours: string; map: string }[] = [];
+export const orderLinks: { label: string; href: string }[] = [];
+export const socials: { label: string; href: string }[] = [];
 
 export type Pkg = {
 	id: string;
@@ -107,7 +109,7 @@ export const packages: Pkg[] = [
 		id: 'portable',
 		type: 'Portable',
 		name: 'Basic',
-		price: 8_500_000,
+		price: 4_500_000,
 		img: '/img/booth-portable',
 		size: '100 cm · lipat',
 		booth: 'Booth portable lipat 100 cm, finishing premium',
@@ -162,66 +164,38 @@ export const packages: Pkg[] = [
 	}
 ];
 
-export const promises = [
-	{
-		n: '01',
-		title: 'Tampilan kelas mall',
-		body: 'Booth, cup dan menu board dirancang setara brand mall. Pembeli rela membayar Rp 15–22 ribu, bukan Rp 8 ribu.'
-	},
-	{
-		n: '02',
-		title: 'POS lengkap dengan perangkat',
-		body: 'Tablet, printer struk dan perlengkapan kasir sudah termasuk. Langganan gratis 6 bulan pertama.'
-	},
-	{
-		n: '03',
-		title: 'Terima beres',
-		body: 'Booth, alat, bahan baku awal, cup custom dan training. Datang, pasang, langsung jualan.'
-	},
-	{
-		n: '04',
-		title: 'Tanpa royalti',
-		body: 'Tidak ada potongan omzet. Kewajiban Anda hanya mengambil bahan baku dari pusat.'
-	}
-];
-
-export const steps = [
-	{ t: 'Chat WhatsApp', d: 'Ceritakan kota, rencana lokasi dan budget Anda.' },
-	{ t: 'Proposal & video', d: 'Kami kirim proposal lengkap: paket, foto booth, simulasi.' },
-	{ t: 'Konsultasi 10 menit', d: 'Telepon singkat untuk membantu memilih paket dan lokasi.' },
-	{ t: 'DP 50% & perjanjian', d: 'Tanda tangan perjanjian kemitraan, booth mulai diproduksi.' },
-	{ t: 'Pelunasan & kirim', d: 'Paket lengkap dikirim, estimasi 7–14 hari kerja.' },
-	{ t: 'Training & buka', d: 'Training resep, kebersihan dan POS. Booth Anda siap buka.' }
-];
-
 export const faqs = [
 	{
-		q: 'Apakah ada royalti atau biaya bulanan?',
-		a: 'Tidak ada royalti dan tidak ada potongan omzet. Satu-satunya biaya rutin adalah langganan POS setelah 6 bulan gratis. Besarannya kami tulis terang di proposal, tanpa biaya tersembunyi.'
+		q: 'Boleh tanya-tanya dulu tanpa langsung daftar?',
+		a: 'Boleh banget. Banyak yang ngobrol dengan kami berminggu-minggu dulu sebelum memutuskan. Tidak ada yang akan memaksa kamu, dan tidak ada "slot terakhir hari ini".'
 	},
 	{
-		q: 'Apa kewajiban mitra setelah booth buka?',
-		a: 'Mengambil bahan baku dan cup dari pusat agar rasa dan tampilan di semua outlet tetap sama. Logo dan SOP tetap milik pusat.'
+		q: 'Ada royalti atau biaya bulanan?',
+		a: 'Tidak ada royalti, dan kami tidak mengambil potongan dari omzetmu. Yang rutin hanya belanja bahan baku dan cup dari kami, supaya rasa di semua outlet sama. Kalau ada biaya lain, kami tulis di proposal sebelum kamu membayar apa pun.'
 	},
 	{
-		q: 'Apakah wilayah saya dilindungi?',
-		a: 'Ya. Kami menjaga jarak minimal 1 km antar mitra Chacha agar setiap outlet punya pasarnya sendiri.'
-	},
-	{
-		q: 'Berapa lama sampai booth bisa buka?',
-		a: 'Setelah pelunasan, paket dikirim dalam estimasi 7–14 hari kerja. Pengiriman ke luar Jawa memakai ekspedisi kargo; ongkir dihitung terpisah.'
-	},
-	{
-		q: 'Saya belum pernah usaha minuman. Apakah bisa?',
-		a: 'Bisa. Setiap paket sudah termasuk training dan SOP video. Satu minuman dibuat dalam kurang dari satu menit, dan POS membantu mencatat stok serta penjualan.'
+		q: 'Aku belum pernah jualan minuman. Bisa?',
+		a: 'Bisa. Kebanyakan yang menghubungi kami juga belum pernah. Resepnya kami ajarkan sampai kamu bisa membuatnya tanpa melihat catatan, dan ada video SOP yang bisa diputar ulang kapan saja.'
 	},
 	{
 		q: 'Lokasi seperti apa yang cocok?',
-		a: 'Sekolah, kampus, perumahan, perkantoran, dan kota yang belum dijangkau gerai milk tea besar. Kirim foto lokasi Anda, tim kami bantu menilai sebelum Anda memutuskan.'
+		a: 'Tempat yang ramai orang lewat dan belum banyak penjual milk tea: depan sekolah, dekat kampus, gerbang perumahan, area kantor. Kirim saja foto lokasinya ke WhatsApp. Kami beri pendapat jujur, termasuk kalau menurut kami kurang cocok.'
 	},
 	{
-		q: 'Apakah hasil di kalkulator dijamin?',
-		a: 'Tidak. Kalkulator memakai asumsi rata-rata untuk gambaran awal. Hasil nyata bergantung pada lokasi, harga jual, biaya sewa dan konsistensi operasional.'
+		q: 'Kalau ada mitra Chacha lain buka dekat lokasiku?',
+		a: 'Tidak akan dalam radius 1 km. Sebelum menerima mitra baru, kami cek dulu siapa saja yang sudah ada di area itu.'
+	},
+	{
+		q: 'Berapa lama sampai booth tiba di lokasi?',
+		a: 'Biasanya 7–14 hari kerja setelah pelunasan. Untuk luar Jawa kami kirim lewat kargo. Ongkirnya dihitung terpisah dan kami kabari di awal, bukan belakangan.'
+	},
+	{
+		q: 'Setelah buka, kewajibanku apa saja?',
+		a: 'Mengambil bahan baku dan cup dari kami, dan mengikuti resep yang sudah diajarkan. Selebihnya usaha itu milikmu: jam buka, karyawan, promo di sekitar lokasi, kamu yang atur.'
+	},
+	{
+		q: 'Angka di kalkulator itu pasti?',
+		a: 'Tidak. Itu hitungan kasar supaya kamu punya gambaran. Hasil sebenarnya tergantung lokasi, harga sewa, dan seberapa konsisten kamu buka. Kami lebih senang kamu mulai dengan harapan yang realistis.'
 	}
 ];
 
@@ -229,66 +203,125 @@ export const faqs = [
 // Only show a strikethrough price (`was` on a package) or a slot count if it is true:
 // a fake "normal price" or fake scarcity is misleading and can get Meta ads rejected.
 export const promo = {
-	cta: 'Gabung Kemitraan, Ambil Promonya',
-	ctaShort: 'Gabung & Ambil Promonya',
-	message: 'Halo Chacha, saya mau gabung kemitraan dan ambil promonya. Boleh info paket & promo bulan ini?',
+	cta: 'Tanya Dulu di WhatsApp, Gratis',
+	ctaShort: 'Tanya Dulu di WhatsApp',
+	message: 'Halo Kak, saya lihat website Chacha. Mau tanya-tanya soal kemitraan dan promo bulan ini.',
 	/** e.g. 'Promo bulan ini: gratis 50 cup custom tambahan' — leave empty to hide the ribbon. */
-	ribbon: 'Promo mitra baru bulan ini, tanya detailnya via WhatsApp',
+	ribbon: 'Bulan ini ada promo untuk mitra baru. Tanya saja dulu',
 	/** Remaining partner slots this month; null hides the counter. */
 	slotsLeft: null as number | null
 };
 
 export const ticker = [
 	'Tanpa royalti',
-	'POS + tablet termasuk',
-	'Gratis langganan POS 6 bulan',
-	'Booth jadi 7–14 hari kerja',
-	'Perlindungan zona 1 km',
-	'Training & SOP video',
-	'Cup custom premium',
-	'Bahan baku awal termasuk'
+	'Booth tiba 7–14 hari kerja',
+	'Tidak ada mitra lain dalam 1 km',
+	'Resep diajarkan sampai bisa',
+	'Bahan baku untuk 100 cup pertama',
+	'Boleh tanya dulu, tanpa komitmen'
 ];
 
-/** "Isi paket" flat-lay tiles (Standard package). */
-export const kit = [
-	{ icon: 'booth', t: 'Booth 120 cm', d: 'Kayu/HPL, lampu LED, sign bulat' },
-	{ icon: 'pos', t: 'Tablet POS', d: 'Kasir, stok & laporan penjualan' },
-	{ icon: 'printer', t: 'Printer struk', d: '+ laci kasir' },
-	{ icon: 'sealer', t: 'Sealer cup', d: 'Semi-otomatis, rapi & anti tumpah' },
-	{ icon: 'shaker', t: 'Shaker & alat', d: 'Termos, dispenser, pompa sirup' },
-	{ icon: 'cup', t: '250 cup custom', d: 'Desain premium Chacha' },
-	{ icon: 'tea', t: 'Bahan baku awal', d: '±250 cup siap jual' },
-	{ icon: 'training', t: 'Training + SOP', d: 'Resep, kebersihan, POS' }
+/** Equipment shown in the "Isi paket" unboxing. `img` is a background-removed cutout in static/img/kit. */
+export const kitItems = [
+	{ id: 'dispenser', name: 'Dispenser Minuman', spec: '8 liter', qty: 2, tip: 'Teh tetap di suhu yang pas dari buka sampai tutup.' },
+	{ id: 'teko-takar', name: 'Teko Takar', spec: '2000 ml', qty: 1, tip: 'Buat menyeduh teh satu batch untuk seharian.' },
+	{ id: 'shaker', name: 'Shaker', spec: '500 ml', qty: 2, tip: 'Dikocok 10 detik, milk tea jadi lembut.' },
+	{ id: 'jigger', name: 'Jigger', spec: 'takaran presisi', qty: 2, tip: 'Supaya cup ke-1 dan cup ke-100 rasanya sama.' },
+	{ id: 'botol-uht', name: 'Botol Kotak UHT', spec: '1 liter', qty: 2, tip: 'Simpan susu rapi di dalam cooler.' },
+	{ id: 'botol-susu', name: 'Botol Susu', spec: 'squeeze', qty: 2, tip: 'Tuang susu kental dan saus dengan rapi.' },
+	{ id: 'pompa-botol', name: 'Pompa Botol Sirup', spec: 'dosis tetap', qty: 2, tip: 'Sekali tekan, takarannya pas. Sangat membantu saat antre.' },
+	{ id: 'pompa-air', name: 'Pompa Air', spec: 'elektrik', qty: 1, tip: 'Tidak perlu mengangkat galon lagi.' },
+	{ id: 'saringan', name: 'Saringan Teh', spec: 'kain halus', qty: 1, tip: 'Teh jernih tanpa ampas.' },
+	{ id: 'sendok-panjang', name: 'Sendok Panjang', spec: 'stainless', qty: 2, tip: 'Aduk sampai dasar cup.' },
+	{ id: 'storage-box', name: 'Storage Box', spec: 'food grade', qty: 1, unit: 'set', tip: 'Simpan topping dan jelly tetap segar.' },
+	{ id: 'timbangan', name: 'Timbangan Digital', spec: '+ timer', qty: 1, tip: 'Takaran teh sampai hitungan gram.' },
+	{ id: 'termometer', name: 'Termometer Infrared', spec: 'tanpa sentuh', qty: 1, tip: 'Cek suhu seduhan tanpa menyentuh.' }
 ];
 
-export const compare = {
-	cols: ['Chacha', 'Kemitraan biasa'],
-	rows: [
-		{ k: 'Tampilan booth & cup', a: 'Setara brand mall', b: 'Booth standar' },
-		{ k: 'POS + tablet', a: 'Termasuk, gratis 6 bulan', b: 'Jarang disediakan' },
-		{ k: 'Royalti bulanan', a: 'Tidak ada', b: 'Bervariasi' },
-		{ k: 'Harga jual menu', a: 'Rp 15–22 ribu', b: 'Rp 8–12 ribu' },
-		{ k: 'Perlindungan wilayah', a: 'Zona 1 km', b: 'Tidak selalu ada' },
-		{ k: 'Laporan penjualan', a: 'Otomatis dari POS', b: 'Catat manual' }
-	]
-};
+/** Also in the package but not photographed yet. */
+export const kitExtras = ['Gelas takar 1000 ml', 'Botol teh (2)', 'Toples teh', 'Storage box jelly (2)', 'Cetakan jelly (1 set)', 'Centong jelly'];
+
+/**
+ * Partnership packages from the 2026 sales material. `price: null` renders a placeholder until
+ * pricing is final.
+ */
+export const offers = [
+	{
+		id: 'peralatan',
+		name: 'Paket 1',
+		title: 'Peralatan Minuman',
+		price: null as number | null,
+		blurb: 'Buat kamu yang sudah punya meja, warung, atau kafe. Tinggal tambah menu Chacha.',
+		includes: ['Peralatan minuman lengkap (19 item)', 'Resep & SOP Chacha', 'Akses bahan baku resmi Chacha'],
+		excludes: ['Booth Chacha', 'Sealer cup'],
+		message: 'Halo Kak, saya tertarik Paket 1 (peralatan saja). Boleh tahu harga dan isinya?'
+	},
+	{
+		id: 'lengkap',
+		name: 'Paket Lengkap',
+		title: 'Siap Jualan',
+		price: null as number | null,
+		featured: true,
+		blurb: 'Buat kamu yang mulai dari nol. Booth datang, alat lengkap, bahan baku cukup untuk 100 cup pertama.',
+		includes: ['Booth Chacha 110 × 55 × 80 cm', 'Peralatan minuman lengkap', 'Sealer cup, timbangan & termometer', 'Bahan baku untuk 100 cup', 'Cup Chacha siap pakai'],
+		excludes: [] as string[],
+		message: 'Halo Kak, saya tertarik Paket Lengkap (booth + alat + bahan baku). Boleh tahu harga dan promonya?'
+	}
+];
 
 /**
  * Social-proof slots. `src: null` renders a labelled placeholder that tells the team exactly
  * which real photo to shoot. Never fill these with another brand's photos.
  */
+/**
+ * LOCAL CONCEPT ONLY: third-party reference photo shown in an empty slot on the dev server, so the
+ * layout can be judged with people in it. Returns null in production builds, where slots fall back
+ * to their labelled placeholder. Files live in git-ignored static/ref/ (see scripts/ref-crops.mjs).
+ */
+export const ref = (name: string): string | null => (import.meta.env.DEV ? `/ref/crop/${name}.webp` : null);
+
 export const proof = [
-	{ src: '/img/g-interior.webp', brief: 'Outlet mitra ramai pembeli', cap: 'Suasana booth Chacha', span: 'tall' },
-	{ src: null, brief: 'Foto: antrean pembeli di depan booth mitra', cap: 'Antrean di booth mitra', span: 'wide' },
-	{ src: '/img/g-duo.webp', brief: '', cap: 'Cup premium, siap difoto', span: 'sq' },
-	{ src: null, brief: 'Foto: mitra berdiri di depan booth barunya', cap: 'Mitra baru buka', span: 'sq' },
-	{ src: '/img/g-clear.webp', brief: '', cap: 'Fruit tea segar', span: 'sq' },
-	{ src: null, brief: 'Foto: unboxing paket mitra (semua isi dijejer)', cap: 'Isi paket saat tiba', span: 'sq' }
-] as const;
+	{ src: null, ref: ref('queue-tall'), brief: 'Foto: pembeli antre memegang cup Chacha', cap: 'Antre di booth mitra', span: 'tall' },
+	{ src: null, ref: ref('queue-wide'), brief: 'Foto: antrean pembeli di depan booth mitra', cap: 'Ramai sejak buka', span: 'wide' },
+	{ src: '/img/g-duo.webp', ref: null, brief: '', cap: 'Cup premium, siap difoto', span: 'sq' },
+	{ src: null, ref: ref('customer-right'), brief: 'Foto: pembeli menikmati Chacha, close-up wajah + cup', cap: 'Satu sedotan, langsung suka', span: 'sq' },
+	{ src: null, ref: ref('crowd-group'), brief: 'Foto: rombongan teman berfoto dengan cup Chacha', cap: 'Diborong satu geng', span: 'sq' },
+	{ src: null, ref: ref('courier'), brief: 'Foto: paket mitra dikirim dari gudang Chacha', cap: 'Paket dikirim tiap hari', span: 'sq' }
+];
 
 /** WhatsApp testimonial screenshots from real partners (with their permission). */
 export const chats = [
-	{ src: null as string | null, brief: 'Screenshot chat mitra: kabar hari pertama buka' },
-	{ src: null as string | null, brief: 'Screenshot chat mitra: repeat order bahan baku' },
-	{ src: null as string | null, brief: 'Screenshot chat mitra: omzet / antrean' }
+	{ src: null as string | null, ref: ref('chat-1'), brief: 'Screenshot chat mitra: kabar hari pertama buka' },
+	{ src: null as string | null, ref: ref('chat-2'), brief: 'Screenshot chat mitra: repeat order bahan baku' },
+	{ src: null as string | null, ref: ref('chat-3'), brief: 'Screenshot chat mitra: omzet / antrean' }
+];
+
+// ── Human touch ───────────────────────────────────────────────────────────────
+// Every `photo: null` renders a labelled slot. Fill with real Chacha people only.
+
+/**
+ * Track record: real photos from the team's existing outlet. They show another brand, so they are
+ * always captioned as that outlet, never as a Chacha booth. Change `outlet` if the relationship
+ * wording changes.
+ */
+export const trackRecord = {
+	outlet: 'Mattchaboy',
+	relation: 'dikelola tim yang sama',
+	points: [
+		'Resep dan cara kerja yang kami ajarkan dipakai setiap hari, bukan baru dicoba',
+		'Kami pernah kewalahan saat jam pulang sekolah. Kami tahu cara menyiapkannya',
+		'Yang mendampingimu nanti orang yang memang biasa berdiri di balik counter'
+	],
+	photos: [
+		{ src: '/img/real/pelanggan-geng.webp', alt: 'Lima pelanggan berpose dengan minuman di depan outlet', note: 'Satu geng, satu kantong' },
+		{ src: '/img/real/outlet-antre.webp', alt: 'Pelanggan duduk menunggu pesanan di depan booth', note: 'Sore hari, kursi penuh' },
+		{ src: '/img/real/order-borongan.webp', alt: 'Belasan cup pesanan borongan siap diambil', note: 'Order 15 cup sekaligus' },
+		{ src: '/img/real/pelanggan-duo.webp', alt: 'Dua pelanggan tersenyum memegang minuman', note: 'Balik lagi minggu depan' }
+	]
+};
+
+/** People who answer WhatsApp. One number per person if available; falls back to WA_NUMBER. */
+export const team = [
+	{ name: 'Nama Admin', role: 'Bantu pilih paket & lokasi', hours: '08.00–21.00', photo: null as string | null, ref: ref('admin-1'), wa: null as string | null },
+	{ name: 'Nama Admin', role: 'Dampingi sampai booth buka', hours: '08.00–17.00', photo: null as string | null, ref: ref('admin-2'), wa: null as string | null }
 ];

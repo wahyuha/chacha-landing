@@ -14,5 +14,7 @@ export default defineConfig({
 			adapter: adapter({ pages: 'build', assets: 'build', fallback: undefined, precompress: true, strict: true })
 		})
 	],
-	ssr: { noExternal: ['three', '@threlte/core', '@threlte/extras'] }
+	ssr: { noExternal: ['three', '@threlte/core', '@threlte/extras'] },
+	// let the dev server answer through an ngrok tunnel for testing on a phone
+	server: { allowedHosts: ['.ngrok-free.app', '.ngrok-free.dev', '.ngrok.app', '.ngrok.io'] }
 });

@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+	@font-face { font-family: 'IS'; src: url('file:///Users/wahyuha/.claude/skills/canvas-design/canvas-fonts/InstrumentSerif-Regular.ttf'); }
+	@font-face { font-family: 'IS'; font-style: italic; src: url('file:///Users/wahyuha/.claude/skills/canvas-design/canvas-fonts/InstrumentSerif-Italic.ttf'); }
+	@font-face { font-family: 'ISans'; src: url('file:///Users/wahyuha/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); }
+	@font-face { font-family: 'ISans'; font-weight: 700; src: url('file:///Users/wahyuha/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Bold.ttf'); }
+	@font-face { font-family: 'Mono'; src: url('file:///Users/wahyuha/.claude/skills/canvas-design/canvas-fonts/DMMono-Regular.ttf'); }
+
+	:root { --paper: #f3eee4; --ink: #17392d; --ink-soft: rgba(23, 57, 45, 0.62); --rule: rgba(23, 57, 45, 0.16); --ochre: #b38a3c; }
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	html, body { width: 1080px; height: 1350px; background: var(--paper); overflow: hidden; }
+	.plate { position: relative; width: 1080px; height: 1350px; background: var(--paper); color: var(--ink); font-family: 'ISans', sans-serif; }
+	.abs { position: absolute; }
+
+	/* paper, light, floor */
+	.glow { left: 40px; top: 330px; width: 1000px; height: 560px; background: radial-gradient(50% 50% at 50% 50%, rgba(255, 253, 247, 0.95), rgba(255, 253, 247, 0) 70%); }
+	.floor { left: 0; right: 0; top: 720px; height: 210px; background: linear-gradient(180deg, rgba(222, 211, 191, 0) 0%, rgba(222, 211, 191, 0.5) 62%, rgba(222, 211, 191, 0) 100%); }
+	.grain { inset: 0; opacity: 0.07; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); pointer-events: none; }
+
+	/* type */
+	.mono { font-family: 'Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
+	.cap { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); }
+	.serif { font-family: 'IS', serif; font-weight: 400; }
+
+	.obj { filter: contrast(1.04) saturate(0.88) sepia(0.06) brightness(1.02); }
+	.shadow { border-radius: 50%; background: radial-gradient(50% 50% at 50% 50%, rgba(52, 40, 22, 0.42), rgba(52, 40, 22, 0) 100%); }
+	.hair { background: var(--rule); }
+
+	/* knolling grid */
+	.grid { left: 64px; top: 920px; width: 952px; height: 270px; display: grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: repeat(2, 1fr); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+	.cell { position: relative; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+	.cell .n { position: absolute; left: 10px; top: 9px; font-family: 'Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--ochre); }
+	.cell .q { position: absolute; right: 10px; top: 9px; font-family: 'Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--ink-soft); }
+	.cell .im { position: absolute; left: 0; right: 0; top: 24px; height: 82px; display: flex; align-items: flex-end; justify-content: center; }
+	.cell .im img { max-width: 108px; object-fit: contain; }
+	.cell .t { position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); }
+
+	.tick { width: 18px; height: 18px; border-color: var(--ochre); border-style: solid; border-width: 0; }
+</style>
+</head>
+<body>
+<div class="plate">
+	<div class="abs glow"></div>
+	<div class="abs floor"></div>
+
+	<!-- crop marks -->
+	<div class="abs tick" style="left:28px;top:28px;border-left-width:1px;border-top-width:1px"></div>
+	<div class="abs tick" style="right:28px;top:28px;border-right-width:1px;border-top-width:1px"></div>
+	<div class="abs tick" style="left:28px;bottom:28px;border-left-width:1px;border-bottom-width:1px"></div>
+	<div class="abs tick" style="right:28px;bottom:28px;border-right-width:1px;border-bottom-width:1px"></div>
+
+	<!-- masthead -->
+	<div class="abs" style="left:64px;top:62px">
+		<p style="font-weight:700;font-size:19px;letter-spacing:0.38em;line-height:1">CHACHA</p>
+		<p style="margin-top:7px;font-size:8.5px;letter-spacing:0.5em;color:var(--ink-soft)">FRESH DRINK &amp; MILK TEA</p>
+	</div>
+	<p class="abs mono" style="right:64px;top:66px;text-align:right;line-height:1.7">Paket Lengkap<br /><span style="color:var(--ochre)">Plate Nº 01 · Kemitraan</span></p>
+	<div class="abs hair" style="left:64px;right:64px;top:116px;height:1px"></div>
+
+	<!-- headline -->
+	<h1 class="abs serif" style="left:60px;top:146px;font-size:98px;line-height:0.94;letter-spacing:-0.012em;color:var(--ink)">
+		Tinggal pasang,<br /><em style="font-style:italic">langsung jualan.</em>
+	</h1>
+
+	<!-- spec column -->
+	<div class="abs" style="left:792px;top:166px;width:224px">
+		<div class="hair" style="height:1px"></div>
+		<div style="display:flex;justify-content:space-between;padding:11px 0" class="mono"><span>Booth</span><span style="color:var(--ink)">110×55×80</span></div>
+		<div class="hair" style="height:1px"></div>
+		<div style="display:flex;justify-content:space-between;padding:11px 0" class="mono"><span>Alat</span><span style="color:var(--ink)">19 pcs</span></div>
+		<div class="hair" style="height:1px"></div>
+		<div style="display:flex;justify-content:space-between;padding:11px 0" class="mono"><span>Bahan baku</span><span style="color:var(--ink)">100 cup</span></div>
+		<div class="hair" style="height:1px"></div>
+		<div style="display:flex;justify-content:space-between;padding:11px 0" class="mono"><span>Royalti</span><span style="color:var(--ink)">0%</span></div>
+		<div class="hair" style="height:1px"></div>
+	</div>
+
+	<!-- hero: booth -->
+	<div class="abs shadow" style="left:150px;top:834px;width:410px;height:32px"></div>
+	<img class="abs obj" src="file:///Users/wahyuha/Documents/project/tropicafarm/chacha/static/img/cut/booth-front.webp" style="left:160px;top:352px;height:500px" alt="" />
+	
+
+	<!-- width dimension, architect style -->
+	<div class="abs" style="left:173px;top:874px;width:366px;height:1px;background:var(--ochre)"></div>
+	<div class="abs" style="left:173px;top:868px;width:1px;height:13px;background:var(--ochre)"></div>
+	<div class="abs" style="left:538px;top:868px;width:1px;height:13px;background:var(--ochre)"></div>
+	<p class="abs mono" style="left:173px;width:366px;top:882px;text-align:center;color:var(--ink)"><span style="color:var(--ochre)">A</span>&nbsp;&nbsp;Booth · 110 cm</p>
+
+	<!-- hero: cups -->
+	<div class="abs shadow" style="left:652px;top:830px;width:150px;height:20px"></div>
+	<img class="abs obj" src="file:///Users/wahyuha/Documents/project/tropicafarm/chacha/static/img/cut/cup-forest-front.webp" style="left:640px;top:552px;height:292px" alt="" />
+	<div class="abs shadow" style="left:800px;top:836px;width:136px;height:20px"></div>
+	<img class="abs obj" src="file:///Users/wahyuha/Documents/project/tropicafarm/chacha/static/img/cut/cup-clear.webp" style="left:786px;top:608px;height:242px" alt="" />
+	
+	<div class="abs" style="left:660px;top:874px;width:270px;height:1px;background:var(--ochre)"></div>
+	<div class="abs" style="left:660px;top:868px;width:1px;height:13px;background:var(--ochre)"></div>
+	<div class="abs" style="left:929px;top:868px;width:1px;height:13px;background:var(--ochre)"></div>
+	<p class="abs mono" style="left:640px;width:310px;top:882px;text-align:center;color:var(--ink)"><span style="color:var(--ochre)">B</span>&nbsp;&nbsp;Cup Chacha · siap jual</p>
+
+	<!-- the tools, knolled -->
+	<div class="abs grid" id="grid"></div>
+
+	<!-- call to action -->
+	<div class="abs hair" style="left:64px;right:64px;top:1212px;height:1px"></div>
+	<div class="abs" style="left:64px;top:1236px">
+		<p class="serif" style="font-size:34px;line-height:1"><em>Tanya harga &amp; promo bulan ini.</em></p>
+		<p class="mono" style="margin-top:10px">Dikirim ke lokasimu · diajari sampai bisa</p>
+	</div>
+	<div class="abs" style="right:64px;top:1236px;height:58px;padding:0 26px 0 22px;border-radius:999px;background:var(--ink);display:flex;align-items:center;gap:12px;color:#f3eee4">
+		<svg viewBox="0 0 24 24" width="22" height="22" fill="#d9bb72" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.42 1.3-1.950 1.35-.5.05-.97.23-3.27-.68-2.77-1.090-4.52-3.93-4.66-4.11-.13-.18-1.11-1.48-1.11-2.83 0-1.34.7-2 .95-2.270.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.46.23.54.77 1.87.84 2 .07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.28-.12.56.16.27.71 1.18 1.53 1.91 1.05.94 1.94 1.23 2.21 1.37.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33Z"/></svg>
+		<span style="font-size:13px;letter-spacing:0.2em;text-transform:uppercase">WhatsApp</span>
+		<span style="width:1px;height:20px;background:rgba(243,238,228,.3)"></span>
+		<span class="serif" style="font-size:24px;font-style:italic">chacha.id</span>
+	</div>
+
+	<div class="abs grain"></div>
+</div>
+
+<script>
+	const K = 'file:///Users/wahyuha/Documents/project/tropicafarm/chacha/static/img/kit/';
+	// id, label, qty, image height inside the 90px well (kept roughly to real-world scale)
+	const tools = [
+		['dispenser', 'Dispenser 8 L', 2, 90],
+		['teko-takar', 'Teko takar', 1, 70],
+		['shaker', 'Shaker', 2, 70],
+		['jigger', 'Jigger', 2, 50],
+		['botol-uht', 'Botol UHT', 2, 84],
+		['botol-susu', 'Botol susu', 2, 80],
+		['pompa-botol', 'Pompa sirup', 2, 84],
+		['pompa-air', 'Pompa air', 1, 64],
+		['saringan', 'Saringan', 1, 34],
+		['sendok-panjang', 'Sendok', 2, 90],
+		['storage-box', 'Storage box', 1, 84],
+		['timbangan', 'Timbangan', 1, 80],
+		['termometer', 'Termometer', 1, 66]
+	];
+	const g = document.getElementById('grid');
+	tools.forEach(([id, t, q, h], i) => {
+		g.insertAdjacentHTML('beforeend', `<div class="cell"><span class="n">${String(i + 1).padStart(2, '0')}</span>${q > 1 ? `<span class="q">×${q}</span>` : ''}<div class="im"><img class="obj" src="${K}${id}.webp" style="height:${Math.round(h*0.9)}px" /></div><p class="t">${t}</p></div>`);
+	});
+	g.insertAdjacentHTML('beforeend', `<div class="cell" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><span class="n">14</span><p class="serif" style="font-size:40px;line-height:1;font-style:italic;color:var(--ink)">+6</p><p class="t" style="position:static">alat lainnya</p></div>`);
+</script>
+</body>
+</html>

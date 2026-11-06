@@ -11,24 +11,25 @@
 	<div class="wrap">
 		<div class="grid gap-6 md:grid-cols-12 md:items-end" use:reveal>
 			<div class="md:col-span-7">
-				<Eyebrow>Bukti di lapangan</Eyebrow>
+				<Eyebrow>Bikin Ketagihan</Eyebrow>
 				<h2 use:splitWords class="display mt-5 text-[clamp(2.1rem,4.4vw,3.5rem)] leading-[1.04] text-ink">
-					Booth yang bikin orang <span class="marker text-forest">berhenti &amp; antre</span>
+					Yang tadinya cuma lewat, <span class="marker text-forest">besoknya balik lagi.</span>
 				</h2>
 			</div>
 			<p class="text-[16px] leading-relaxed text-ink-muted md:col-span-5" data-reveal>
-				Tampilan premium bukan sekadar cantik. Cup dan booth yang layak difoto membuat pembeli datang, memotret, dan membagikannya.
+				Orang memotret cup-nya sebelum meminumnya. Fotonya masuk story, lalu temannya datang besok sore.
 			</p>
 		</div>
 
 		<div class="mt-10 grid grid-flow-dense auto-rows-[160px] grid-cols-2 gap-3 md:mt-14 md:auto-rows-[220px] md:grid-cols-4 md:gap-4" use:reveal={{ stagger: 0.07 }}>
 			{#each proof as p}
-				<figure data-reveal class="group relative overflow-hidden rounded-[20px] ring-1 ring-linen {span[p.span]}">
+				<figure data-reveal class="group relative overflow-hidden rounded-[20px] ring-1 ring-linen {span[p.span as keyof typeof span]}">
 					{#if p.src}
 						<img src={p.src} alt={p.cap} loading="lazy" class="size-full object-cover transition-transform duration-[1.2s] ease-(--ease-soft) group-hover:scale-105" />
 						<figcaption class="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1.5 text-[12px] font-semibold text-ink backdrop-blur">{p.cap}</figcaption>
 					{:else}
-						<PhotoSlot brief={p.brief} />
+						<PhotoSlot brief={p.brief} ref={p.ref} />
+						{#if p.ref}<figcaption class="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1.5 text-[12px] font-semibold text-ink backdrop-blur">{p.cap}</figcaption>{/if}
 					{/if}
 				</figure>
 			{/each}
@@ -36,8 +37,8 @@
 
 		<div class="mt-16 md:mt-20" use:reveal>
 			<div class="flex flex-col justify-between gap-3 md:flex-row md:items-end" data-reveal>
-				<h3 class="display text-[clamp(1.6rem,3vw,2.3rem)] leading-tight text-ink">Kata mitra Chacha</h3>
-				<p class="text-[13px] text-ink-muted">Screenshot asli, ditampilkan dengan izin mitra.</p>
+				<h3 class="display text-[clamp(1.6rem,3vw,2.3rem)] leading-tight text-ink">Kata mereka yang sudah jualan</h3>
+				<p class="text-[13px] text-ink-muted">Screenshot asli, kami tampilkan dengan izin.</p>
 			</div>
 			<ul class="mt-6 grid gap-4 sm:grid-cols-3">
 				{#each chats as c}
@@ -48,7 +49,7 @@
 								{#if c.src}
 									<img src={c.src} alt="Testimoni mitra Chacha via WhatsApp" loading="lazy" class="size-full object-cover object-top" />
 								{:else}
-									<PhotoSlot brief={c.brief} />
+									<PhotoSlot brief={c.brief} ref={c.ref} />
 								{/if}
 							</div>
 						</div>

@@ -1,11 +1,17 @@
 <script lang="ts">
-	// The approved mark is a leaf-A wordmark; until the vector exists the name is set in type.
-	let { sub = true, size = 22, class: cls = '' }: { sub?: boolean; size?: number; class?: string } = $props();
+	import { LOGO } from '$lib/brand/logo-paths';
+
+	// The brand logo (leaf-A wordmark + "FRESH DRINK & MILK TEA"), drawn from vector paths in currentColor.
+	// `cap` is the height of the capitals in px; the subline is too small to read below ~cap 24.
+	let { cap = 20, sub = false, class: cls = '' }: { cap?: number; sub?: boolean; class?: string } = $props();
+
+	const pad = 2; // room for the round letters' overshoot
+	const vbH = $derived(sub ? LOGO.height + pad : LOGO.cap + pad * 2);
+	const width = $derived((LOGO.width / LOGO.cap) * cap);
+	const height = $derived((vbH / LOGO.cap) * cap);
 </script>
 
-<span class="inline-flex flex-col items-center leading-none {cls}">
-	<span style="font-size:{size}px;letter-spacing:0.16em;font-weight:650" class="pl-[0.16em]">CHACHA</span>
-	{#if sub}
-		<span style="font-size:{Math.max(8, size * 0.36)}px;letter-spacing:0.32em;font-weight:600" class="mt-[0.45em] pl-[0.32em] opacity-80">FRESH &amp; MILK TEA</span>
-	{/if}
-</span>
+<svg viewBox="0 {-pad} {LOGO.width} {vbH}" {width} {height} class="block {cls}" role="img" aria-label="Chacha{sub ? ' — Fresh Drink & Milk Tea' : ''}">
+	<path d={LOGO.word} fill="currentColor" />
+	{#if sub}<path d={LOGO.sub} fill="currentColor" />{/if}
+</svg>

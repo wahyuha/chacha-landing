@@ -51,10 +51,10 @@
 		<div class="grid gap-8 md:grid-cols-12 md:items-end" use:reveal>
 			<div class="md:col-span-7">
 				<Eyebrow dark>Simulasi balik modal</Eyebrow>
-				<h2 use:splitWords class="display mt-6 text-[clamp(2.1rem,4.4vw,3.5rem)] leading-[1.04]">Hitung sendiri, dengan angka yang jujur</h2>
+				<h2 use:splitWords class="display mt-6 text-[clamp(2.1rem,4.4vw,3.5rem)] leading-[1.04]">Coba hitung sendiri dulu</h2>
 			</div>
 			<p class="text-[16px] leading-[1.7] text-cream/70 md:col-span-5" data-reveal>
-				Kami mulai dari skenario sepi. Geser angka sesuai rencana lokasi Anda dan lihat kapan modal kembali.
+				Angkanya sengaja kami mulai dari hari yang sepi, 30 cup sehari. Geser sesuai perkiraan lokasimu.
 			</p>
 		</div>
 
@@ -77,7 +77,7 @@
 					</label>
 					<label class="block">
 						<span class="flex items-baseline justify-between"><span class="text-[14px] text-cream/75">Harga jual rata-rata</span><span class="price text-[22px] text-cream">{rupiah(price)}</span></span>
-						<input type="range" min="12000" max="22000" step="500" bind:value={price} style="--fill:{fill(price, 12000, 22000)}" class="range mt-4" />
+						<input type="range" min="12000" max="16000" step="500" bind:value={price} style="--fill:{fill(price, 12000, 16000)}" class="range mt-4" />
 					</label>
 					<label class="block">
 						<span class="flex items-baseline justify-between"><span class="text-[14px] text-cream/75">Biaya tetap per bulan <span class="text-cream/45">(gaji, sewa, listrik)</span></span><span class="price text-[22px] text-cream">{jutaan(fixed)}</span></span>
@@ -127,10 +127,10 @@
 				</div>
 
 				<a href={waLink(`Halo Chacha, saya sudah coba kalkulator: ${cups} cup/hari, paket ${buyable[pkgIdx].name}. Boleh diskusi lokasi saya?`)} target="_blank" rel="noopener" class="btn btn-primary mt-8 w-full">
-					<MessageCircle size={18} />Diskusikan lokasi saya
+					<MessageCircle size={18} />Diskusikan hasilnya dengan kami
 				</a>
 				<p class="mt-5 text-[12px] leading-relaxed text-ink-muted">
-					Asumsi: HPP {rupiah(HPP)}/cup (bahan, cup, sedotan), buka {DAYS} hari/bulan. Hanya ilustrasi, bukan jaminan penghasilan. Hasil nyata bergantung pada lokasi dan operasional.
+					Asumsi: HPP {rupiah(HPP)}/cup (bahan, cup, sedotan), buka {DAYS} hari sebulan. Ini hitungan kasar, bukan janji penghasilan. Hasil sebenarnya tergantung lokasi dan cara kamu menjalankannya.
 				</p>
 			</div>
 		</div>

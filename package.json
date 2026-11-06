@@ -5,26 +5,34 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "vite build && rm -rf build/ref",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"cup:print": "node scripts/logo.ts && node scripts/cup-print.ts"
 	},
 	"devDependencies": {
+		"@fontsource/montserrat": "^5.3.0",
+		"@fontsource/plus-jakarta-sans": "^5.3.0",
+		"@imgly/background-removal-node": "^1.4.5",
 		"@sveltejs/adapter-static": "^3.0.10",
 		"@sveltejs/kit": "^2.63.0",
 		"@sveltejs/vite-plugin-svelte": "^7.1.2",
 		"@tailwindcss/vite": "^4.3.3",
 		"@types/three": "^0.186.0",
+		"opentype.js": "^2.0.0",
 		"sharp": "^0.35.5",
 		"svelte": "^5.56.1",
 		"svelte-check": "^4.6.0",
 		"tailwindcss": "^4.3.3",
+		"three-gpu-pathtracer": "^0.0.26",
+		"three-mesh-bvh": "^0.9.15",
 		"typescript": "^6.0.3",
 		"vite": "^8.0.16"
 	},
 	"dependencies": {
+		"@fontsource-variable/jost": "^5.3.0",
 		"@fontsource-variable/plus-jakarta-sans": "^5.3.0",
 		"@fontsource/cormorant-garamond": "^5.3.0",
 		"@lucide/svelte": "^1.48.0",

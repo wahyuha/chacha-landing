@@ -1,0 +1,11 @@
+# Quiet Inventory
+
+**Philosophy.** An object becomes trustworthy when it is shown completely. Quiet Inventory treats everyday instruments as specimens on a museum plate. Each one is isolated, measured, numbered and given exactly the same respect as its neighbour. Seeing everything laid out, nothing hidden and nothing exaggerated, is what persuades. The work should feel like the final plate of a long cataloguing project: meticulously crafted, the product of painstaking attention, every hairline argued over.
+
+**Space and form.** One monumental object holds the upper field, standing on an implied floor in generous negative space. Beneath it, the smaller instruments sit in a strict modular grid, each in its own cell like a drawer in a cabinet of curiosities. The tension is between the single hero and the many, between the stage and the archive. Margins are wide and constant. Nothing touches an edge, and nothing crowds anything else. The spacing should look like it took countless refinements to reach this calm.
+
+**Colour and material.** Warm unbleached paper, a whisper of grain, and one deep evergreen ink. A single metallic ochre is used sparingly, only for measurement and reference marks. Photographs are graded into one temperature so that objects shot on different days read as one collection. Shadows are soft contact shadows, never drop shadows: the objects rest on the paper rather than float above it.
+
+**Scale and rhythm.** Hairline rules, registration ticks and small numerals (01, 02, 03…) repeat with metronomic regularity. That rhythm is what makes the plate feel studied rather than decorated. Dimension lines, drawn like an architect's, give the hero a quiet scientific authority. Repetition rewards a longer look: the eye moves cell to cell like reading a ledger.
+
+**Hierarchy and type.** Type is sparse and placed like museum labels. One editorial serif phrase, partly in italic, is the only loud gesture. Everything else is set small: monospaced reference numbers and widely tracked sans captions. Words name and never explain, and the image carries the argument. The finished plate must read as master-level execution: crisp, deliberate and unhurried, the kind of artifact that looks as though someone at the top of their field laboured over it for weeks.

@@ -13,11 +13,11 @@
 	<div class="wrap grid gap-12 md:grid-cols-12">
 		<div class="md:col-span-5" use:reveal>
 			<Eyebrow>Pertanyaan</Eyebrow>
-			<h2 use:splitWords class="display mt-6 text-[clamp(2.1rem,4.2vw,3.4rem)] leading-[1.04] text-forest">Yang sering ditanyakan calon mitra</h2>
+			<h2 use:splitWords class="display mt-6 text-[clamp(2.1rem,4.2vw,3.4rem)] leading-[1.04] text-forest">Yang biasanya ditanyakan duluan</h2>
 			<p class="mt-6 max-w-[36ch] text-[16px] leading-[1.7] text-ink-muted" data-reveal>
-				Belum terjawab? Tim kami membalas WhatsApp setiap hari pukul 08.00–21.00.
+				Pertanyaanmu tidak ada di sini? Tanya langsung saja. Kami balas setiap hari jam 08.00–21.00.
 			</p>
-			<a href={waLink('Halo Chacha, saya punya pertanyaan tentang kemitraan.')} target="_blank" rel="noopener" class="btn btn-outline mt-8 text-forest" data-reveal>Tanya langsung</a>
+			<a href={waLink('Halo Kak, saya mau tanya soal kemitraan Chacha.')} target="_blank" rel="noopener" class="btn btn-outline mt-8 text-forest" data-reveal>Tanya langsung</a>
 		</div>
 		<ul class="md:col-span-7" use:reveal={{ stagger: 0.05 }}>
 			{#each faqs as f, i}
