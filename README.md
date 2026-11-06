@@ -19,13 +19,13 @@ pnpm build        # static output in build/ (deploy to any static host / CDN)
 
 Netlify project `chachatea` builds `main` on every push (settings in `netlify.toml`). This folder is linked to it, so `netlify status` and other CLI commands work here.
 
-Both domains are registered at Hostinger, each with its apex A record set to `75.2.60.5` and `www` as a CNAME to `chachatea.netlify.app`. `chachatea.id` is the primary domain; `www.chachatea.id` and `chacha.id` redirect to it.
+Both domains are registered at Hostinger, each with its apex A record set to `75.2.60.5` and `www` as a CNAME to `chachatea.netlify.app`. `www.chachatea.id` is the primary domain; `chachatea.id` and `chacha.id` redirect to it.
 
 ## Still to fill in
 
 - **Tea descriptions**: `teas` in `src/lib/data.ts` need checking by someone who has tasted the teas.
 - **Outlets, delivery apps, social accounts**: fill `outlets`, `orderLinks` and `socials` in `src/lib/data.ts`. Empty lists stay hidden; with no outlets, the home page asks people to message on WhatsApp.
-- **Domain**: `SITE_URL` in `src/lib/data.ts`, `static/sitemap.xml` and `static/robots.txt` use `chachatea.id`. Booth and poster artwork still print `chacha.id`.
+- **Domain**: `SITE_URL` in `src/lib/data.ts`, `static/sitemap.xml` and `static/robots.txt` use `www.chachatea.id`. Booth and poster artwork still print `chacha.id`.
 
 ## Copy
 

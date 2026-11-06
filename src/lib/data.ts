@@ -1,7 +1,7 @@
 // WhatsApp Business number (country code, no +).
 export const WA_NUMBER = '6282246632200';
 
-export const SITE_URL = 'https://chachatea.id';
+export const SITE_URL = 'https://www.chachatea.id';
 
 export const waLink = (message: string) =>
 	`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;

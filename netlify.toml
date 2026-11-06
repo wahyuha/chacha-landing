@@ -8,25 +8,25 @@
 # chacha.id is an alias of this project. Forward it, keeping the path, to the main domain.
 [[redirects]]
   from = "https://chacha.id/*"
-  to = "https://chachatea.id/:splat"
+  to = "https://www.chachatea.id/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "http://chacha.id/*"
-  to = "https://chachatea.id/:splat"
+  to = "https://www.chachatea.id/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://www.chacha.id/*"
-  to = "https://chachatea.id/:splat"
+  to = "https://www.chachatea.id/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "http://www.chacha.id/*"
-  to = "https://chachatea.id/:splat"
+  to = "https://www.chachatea.id/:splat"
   status = 301
   force = true
 
