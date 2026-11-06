@@ -65,7 +65,7 @@
 		<div class="wrap grid items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-14">
 			<div class="order-2 flex flex-col gap-6 lg:order-1">
 				<p class="label text-sage-text">milk tea &amp; fresh drink</p>
-				<h1 class="display text-[clamp(2.75rem,6vw,5.25rem)] leading-[1.04] text-forest">Teh segar, dibuat setiap hari.</h1>
+				<h1 class="display text-[clamp(2.75rem,6vw,5.25rem)] leading-[1.04] text-forest">Maybe you need a little Chacha.</h1>
 				<p class="max-w-[42ch] text-[17px] leading-7 md:text-[18px] md:leading-[30px]">Milk tea, matcha, dan fresh drink. Mulai {rupiah(12000)}.</p>
 				<div class="grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
 					<a href="/menu" class="btn btn-primary">Lihat menu</a>
