@@ -44,7 +44,7 @@
 		{
 			id: 'outlet',
 			icon: Building2,
-			label: 'Outlet, ruko, mal',
+			label: 'Outlet, ruko, mall',
 			sub: 'Biaya lewat konsultasi',
 			tips: [
 				{
@@ -63,7 +63,7 @@
 				{ icon: MapPin, title: 'Video call gratis, atau ketemu langsung', text: 'Untuk outlet besar kami bisa datang ke lokasimu. Waktu dan tempatnya kita sepakati bersama.' }
 			],
 			steps: ['Kirim ukuran dan foto tempatmu lewat WhatsApp', 'Video call gratis untuk membahas rencanamu', 'Kami kirim konsep layout dan hitungan biayanya'],
-			note: 'Biaya outlet dan mal kami hitung setelah melihat tempatmu.',
+			note: 'Biaya outlet dan mall kami hitung setelah melihat tempatmu.',
 			cta: 'Jadwalkan konsultasi gratis',
 			msg: 'Halo Kak, saya mau konsultasi buka outlet Chacha. Tempat saya: '
 		}
@@ -84,7 +84,7 @@
 	<div class="wrap">
 		<div class="max-w-3xl" use:reveal>
 			<Eyebrow>Sebelum kamu mulai</Eyebrow>
-			<h2 use:splitWords class="display mt-5 text-[clamp(2.1rem,4.4vw,3.5rem)] leading-[1.06] text-forest">Booth kecil atau outlet di mal, modalnya bisa ditekan.</h2>
+			<h2 use:splitWords class="display mt-5 text-[clamp(2.1rem,4.4vw,3.5rem)] leading-[1.06] text-forest">Booth kecil atau outlet di mall, modalnya bisa ditekan.</h2>
 			<p class="mt-5 max-w-[52ch] text-[17px] leading-relaxed text-ink-muted" data-reveal>Saran ini datang dari outlet Chacha yang sudah jalan. Pilih yang paling dekat dengan rencanamu.</p>
 		</div>
 

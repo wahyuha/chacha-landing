@@ -182,7 +182,7 @@ export const faqs = [
 		a: 'Tempat yang ramai orang lewat dan belum banyak penjual milk tea: depan sekolah, dekat kampus, gerbang perumahan, area kantor. Kirim saja foto lokasinya ke WhatsApp. Kami beri pendapat jujur, termasuk kalau menurut kami kurang cocok.'
 	},
 	{
-		q: 'Bisa buka di ruko atau mal?',
+		q: 'Bisa buka di ruko atau mall?',
 		a: 'Bisa. Untuk tempat yang lebih besar, kami bantu buatkan booth, interior, dan layout-nya, lalu siapkan kasir dan laporan penjualan untukmu. Biayanya kami hitung setelah melihat tempatnya, jadi mulai dengan konsultasi gratis lewat WhatsApp.'
 	},
 	{
