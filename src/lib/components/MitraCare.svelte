@@ -79,7 +79,7 @@
 		<div class="mt-5 grid gap-5 lg:grid-cols-2" use:reveal={{ stagger: 0.1 }}>
 			<!-- Masterclass -->
 			<article class="flex flex-col rounded-[24px] bg-forest p-6 text-white md:p-8" data-reveal>
-				<p class="label text-gold">Masterclass</p>
+				<p class="label text-[#e0c07a]">Masterclass</p>
 				<h3 class="display mt-3 text-[clamp(1.6rem,2.8vw,2.25rem)] leading-tight">Belajar bikin konten yang bikin orang mampir</h3>
 				<p class="mt-3 text-[16px] leading-relaxed text-mist">Kami ajari cara menulis caption dan konten jualan untuk outletmu.</p>
 				<div class="mt-7 grid gap-3 sm:mt-auto sm:pt-7">

@@ -182,6 +182,10 @@ export const faqs = [
 		a: 'Tempat yang ramai orang lewat dan belum banyak penjual milk tea: depan sekolah, dekat kampus, gerbang perumahan, area kantor. Kirim saja foto lokasinya ke WhatsApp. Kami beri pendapat jujur, termasuk kalau menurut kami kurang cocok.'
 	},
 	{
+		q: 'Bisa buka di ruko atau mal?',
+		a: 'Bisa. Untuk tempat yang lebih besar, kami bantu buatkan booth, interior, dan layout-nya, lalu siapkan kasir dan laporan penjualan untukmu. Biayanya kami hitung setelah melihat tempatnya, jadi mulai dengan konsultasi gratis lewat WhatsApp.'
+	},
+	{
 		q: 'Kalau ada mitra Chacha lain buka dekat lokasiku?',
 		a: 'Tidak. Kami yang mengatur jarak antar mitra, 1 sampai 10 km tergantung areanya. Sebelum menerima mitra baru, kami cek dulu siapa saja yang sudah ada di area itu.'
 	},

@@ -11,6 +11,7 @@
 	import Ticker from '$lib/components/Ticker.svelte';
 	import Kit from '$lib/components/Kit.svelte';
 	import MitraCare from '$lib/components/MitraCare.svelte';
+	import SizeGuide from '$lib/components/SizeGuide.svelte';
 	import StickyCta from '$lib/components/StickyCta.svelte';
 	import PosterShare from '$lib/components/PosterShare.svelte';
 	import TeamChat from '$lib/components/TeamChat.svelte';
@@ -63,6 +64,7 @@
 	<Ticker />
 	<Kit />
 	<Packages />
+	<SizeGuide />
 	<MitraCare />
 	<PosterShare />
 	<Calculator />
