@@ -73,7 +73,7 @@
 	<img data-obj src="/img/kit/{id}.webp" srcset={srcset(`/img/kit/${id}.webp`)} sizes="(min-width: 1024px) 160px, 110px" alt={name} loading="lazy" draggable="false" class="obj pointer-events-none max-h-full max-w-full object-contain" />
 {/snippet}
 
-<section bind:this={section} id="isi-paket" class="relative overflow-hidden bg-cream py-20 lg:h-[100svh] lg:min-h-[680px] lg:py-0">
+<section bind:this={section} id="isi-paket" class="relative overflow-hidden border-t border-forest/10 bg-cream py-20 lg:h-[100svh] lg:min-h-[680px] lg:py-0">
 	<div class="wrap grid gap-10 lg:h-full lg:grid-cols-[minmax(0,0.85fr)_minmax(0,2fr)] lg:gap-8 lg:pb-24 lg:pt-24">
 		<!-- left: copy, counter, booth -->
 		<div class="flex flex-col lg:min-h-0" use:reveal>

@@ -13,7 +13,6 @@
 	import MitraCare from '$lib/components/MitraCare.svelte';
 	import SizeGuide from '$lib/components/SizeGuide.svelte';
 	import StickyCta from '$lib/components/StickyCta.svelte';
-	import PosterShare from '$lib/components/PosterShare.svelte';
 	import TeamChat from '$lib/components/TeamChat.svelte';
 	import { SITE_URL, faqs, packages, waLink } from '$lib/data';
 
@@ -60,17 +59,16 @@
 <Nav cta={{ label: 'Tanya Dulu', href: waLink('Halo Kak, saya mau tanya-tanya soal kemitraan Chacha.'), external: true }} />
 <main>
 	<Hero />
-	<!-- Hidden for now: RealOutlet (Foto asli dari outlet kami) and Proof (Bikin Ketagihan, Kata mereka yang sudah jualan). Import and place them here to bring them back. -->
-	<Ticker />
-	<Kit />
-	<Packages />
+	<!-- Hidden for now: RealOutlet (Foto asli dari outlet kami), Proof (Bikin Ketagihan, Kata mereka yang sudah jualan) and PosterShare (Simpan untuk nanti). Import and place them here to bring them back. -->
 	<SizeGuide />
+	<Ticker />
+	<Packages />
 	<MitraCare />
-	<PosterShare />
 	<Calculator />
 	<MenuSection />
 	<CupShowcase />
 	<TeamChat />
+	<Kit />
 	<Faq />
 	<Closing />
 </main>

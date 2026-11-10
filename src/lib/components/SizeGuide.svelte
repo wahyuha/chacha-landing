@@ -80,7 +80,7 @@
 	}
 </script>
 
-<section id="mulai" class="scroll-mt-16 bg-cream py-20 md:py-28">
+<section id="mulai" class="scroll-mt-16 border-t border-forest/10 bg-cream py-20 md:py-28">
 	<div class="wrap">
 		<div class="max-w-3xl" use:reveal>
 			<Eyebrow>Sebelum kamu mulai</Eyebrow>
