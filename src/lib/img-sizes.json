@@ -1,0 +1,356 @@
+{
+	"/img/site/drinks/caramel-matcha.webp": {
+		"w": 406,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/classic-jelly-milk-tea.webp": {
+		"w": 424,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/classic-matcha.webp": {
+		"w": 393,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/classic-milk-tea.webp": {
+		"w": 431,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/coconut-matcha.webp": {
+		"w": 406,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/creamy-matcha.webp": {
+		"w": 381,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/crumble-matcha.webp": {
+		"w": 387,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/jasmine-milk-tea.webp": {
+		"w": 460,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/jasmine-tea.webp": {
+		"w": 461,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/mango-tea.webp": {
+		"w": 470,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/peach-oolong-milk-tea.webp": {
+		"w": 464,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/peach-oolong-tea.webp": {
+		"w": 453,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/premium-oolong-milk-tea.webp": {
+		"w": 419,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/red-oolong-milk-tea.webp": {
+		"w": 416,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/drinks/ube-cream-matcha.webp": {
+		"w": 395,
+		"v": [
+			200,
+			300
+		]
+	},
+	"/img/site/teas/black.webp": {
+		"w": 1200,
+		"v": [
+			480,
+			640,
+			800
+		]
+	},
+	"/img/site/teas/four-seasons.webp": {
+		"w": 1200,
+		"v": [
+			480,
+			640,
+			800
+		]
+	},
+	"/img/site/teas/jasmine.webp": {
+		"w": 1200,
+		"v": [
+			480,
+			640,
+			800
+		]
+	},
+	"/img/site/teas/matcha.webp": {
+		"w": 1170,
+		"v": [
+			480,
+			640,
+			800
+		]
+	},
+	"/img/site/teas/premium-oolong.webp": {
+		"w": 1200,
+		"v": [
+			480,
+			640,
+			800
+		]
+	},
+	"/img/site/teas/red-oolong.webp": {
+		"w": 1200,
+		"v": [
+			480,
+			640,
+			800
+		]
+	},
+	"/img/site/bases/jasmine.webp": {
+		"w": 885,
+		"v": [
+			480
+		]
+	},
+	"/img/site/bases/matcha.webp": {
+		"w": 1170,
+		"v": [
+			480
+		]
+	},
+	"/img/site/bases/premium-black-tea.webp": {
+		"w": 1110,
+		"v": [
+			480
+		]
+	},
+	"/img/site/bases/premium-oolong.webp": {
+		"w": 885,
+		"v": [
+			480
+		]
+	},
+	"/img/site/bases/red-oolong.webp": {
+		"w": 1110,
+		"v": [
+			480
+		]
+	},
+	"/img/site/duo-1200.webp": {
+		"w": 1188,
+		"v": [
+			640,
+			900
+		]
+	},
+	"/img/site/poster-layers-1200.webp": {
+		"w": 1200,
+		"v": [
+			640,
+			900
+		]
+	},
+	"/img/site/poster-peach-1200.webp": {
+		"w": 1200,
+		"v": [
+			640,
+			900
+		]
+	},
+	"/img/site/poster-matcha-1200.webp": {
+		"w": 1200,
+		"v": [
+			640,
+			900
+		]
+	},
+	"/img/site/hands.webp": {
+		"w": 1200,
+		"v": [
+			600,
+			900
+		]
+	},
+	"/img/kit/botol-susu.webp": {
+		"w": 377,
+		"v": [
+			200,
+			320
+		]
+	},
+	"/img/kit/botol-uht.webp": {
+		"w": 428,
+		"v": [
+			200,
+			320
+		]
+	},
+	"/img/kit/dispenser.webp": {
+		"w": 393,
+		"v": [
+			200,
+			320
+		]
+	},
+	"/img/kit/jigger.webp": {
+		"w": 348,
+		"v": [
+			200
+		]
+	},
+	"/img/kit/pompa-air.webp": {
+		"w": 390,
+		"v": [
+			200,
+			320
+		]
+	},
+	"/img/kit/pompa-botol.webp": {
+		"w": 498,
+		"v": [
+			200,
+			320
+		]
+	},
+	"/img/kit/saringan.webp": {
+		"w": 467,
+		"v": [
+			200,
+			320
+		]
+	},
+	"/img/kit/sendok-panjang.webp": {
+		"w": 225,
+		"v": [
+			200
+		]
+	},
+	"/img/kit/shaker.webp": {
+		"w": 640,
+		"v": [
+			200,
+			320
+		]
+	},
+	"/img/kit/storage-box.webp": {
+		"w": 408,
+		"v": [
+			200,
+			320
+		]
+	},
+	"/img/kit/teko-takar.webp": {
+		"w": 519,
+		"v": [
+			200,
+			320
+		]
+	},
+	"/img/kit/termometer.webp": {
+		"w": 370,
+		"v": [
+			200,
+			320
+		]
+	},
+	"/img/kit/timbangan.webp": {
+		"w": 475,
+		"v": [
+			200,
+			320
+		]
+	},
+	"/img/cut/cup-forest-front.webp": {
+		"w": 647,
+		"v": [
+			240,
+			400
+		]
+	},
+	"/img/cut/cup-clear.webp": {
+		"w": 483,
+		"v": [
+			240
+		]
+	},
+	"/img/cut/booth-front.webp": {
+		"w": 1400,
+		"v": [
+			700,
+			1000
+		]
+	},
+	"/img/cut/booth-left.webp": {
+		"w": 1400,
+		"v": [
+			700,
+			1000
+		]
+	},
+	"/img/cut/booth-right.webp": {
+		"w": 1400,
+		"v": [
+			700,
+			1000
+		]
+	},
+	"/img/cup-cream-render.webp": {
+		"w": 900,
+		"v": [
+			160,
+			480
+		]
+	},
+	"/img/cup-render.webp": {
+		"w": 900,
+		"v": [
+			480
+		]
+	}
+}

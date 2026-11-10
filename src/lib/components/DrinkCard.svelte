@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { rupiah, type Drink } from '$lib/data';
+	import { srcset } from '$lib/img';
 
-	let { drink, showBase = false, compact = false }: { drink: Drink; showBase?: boolean; compact?: boolean } = $props();
+	let { drink, showBase = false, compact = false, eager = false }: { drink: Drink; showBase?: boolean; compact?: boolean; eager?: boolean } = $props();
+	const src = $derived(`/img/site/drinks/${drink.slug}.webp`);
 </script>
 
 <article class="relative flex h-full flex-col">
 	<div class="relative rounded-[12px] bg-white {compact ? 'h-36 sm:h-64' : 'h-52 sm:h-64'}">
-		<img src="/img/site/drinks/{drink.slug}.webp" alt={drink.name} loading="lazy" decoding="async" class="absolute inset-0 size-full object-contain p-3 sm:p-4" />
+		<img {src} srcset={srcset(src)} sizes="(min-width: 640px) 150px, 115px" alt={drink.name} loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} decoding="async" class="absolute inset-0 size-full object-contain p-3 sm:p-4" />
 	</div>
 	{#if drink.best}
 		<span class="absolute right-2 top-2 rounded-full bg-deep-forest px-2 py-1 font-display text-[9px] font-medium uppercase tracking-[0.12em] text-gold sm:right-2.5 sm:top-2.5 sm:px-2.5 sm:py-1.5 sm:text-[10px]">Best seller</span>

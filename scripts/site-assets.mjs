@@ -154,9 +154,8 @@ if (wants('teas')) {
 
 if (wants('photos')) {
 	for (const [src, name] of [['poster-peach', 'poster-peach'], ['poster-matcha', 'poster-matcha'], ['poster-layers', 'poster-layers'], ['duo', 'duo']]) {
-		for (const w of [1200, 640]) {
-			await sharp(`${SRC}/${src}.jpg`).resize({ width: w, withoutEnlargement: true }).webp({ quality: 82 }).toFile(`${OUT}/${name}-${w}.webp`);
-		}
+		// Smaller copies come from scripts/responsive.mjs.
+		await sharp(`${SRC}/${src}.jpg`).resize({ width: 1200, withoutEnlargement: true }).webp({ quality: 82 }).toFile(`${OUT}/${name}-1200.webp`);
 	}
 	// Kemitraan hero: the real outlet photo.
 	for (const w of [1500, 800]) {

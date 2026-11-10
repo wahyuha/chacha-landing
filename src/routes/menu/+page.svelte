@@ -5,6 +5,7 @@
 	import DrinkCard from '$lib/components/DrinkCard.svelte';
 	import { SITE_URL, categories, drinks, iceLevels, orderLinks, sugarLevels, teaBases, type Category } from '$lib/data';
 	import { scrollToId } from '$lib/motion';
+	import { srcset } from '$lib/img';
 
 	const title = 'Menu Chacha | Milk Tea, Matcha, Fresh Drink';
 	const description = 'Semua menu Chacha: 6 milk tea, 6 matcha, dan 3 fresh drink, mulai Rp 12.000. Gula dan es bisa diatur.';
@@ -94,7 +95,7 @@
 
 	<div class="wrap flex flex-col gap-12 py-10 md:py-14 lg:flex-row lg:items-start">
 		<div class="flex min-w-0 flex-1 flex-col gap-14 md:gap-18">
-			{#each categories as c}
+			{#each categories as c, ci}
 				{@const list = listFor(c)}
 				{@const bases = teaBases[c]}
 				<section id={anchor(c)} class="flex flex-col gap-5 md:gap-7">
@@ -103,7 +104,7 @@
 						<ul class="-mx-5 flex gap-3 overflow-x-auto px-5 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-4 sm:gap-4 sm:rounded-[12px] sm:bg-paper sm:p-4 sm:px-4">
 							{#each bases as b}
 								<li class="w-48 shrink-0 sm:w-auto">
-									<img src="/img/site/bases/{b.img}.webp" alt="Seduhan dan daun {b.name}" loading="lazy" class="h-auto w-full" />
+									<img src="/img/site/bases/{b.img}.webp" srcset={srcset(`/img/site/bases/${b.img}.webp`)} sizes="(min-width: 640px) 25vw, 60vw" alt="Seduhan dan daun {b.name}" loading="lazy" class="h-auto w-full" />
 									<p class="mt-1 font-display text-[11px] font-medium uppercase leading-4 tracking-[0.16em] text-forest">{b.name}</p>
 									<p class="text-[13px] leading-[18px] text-ink-muted">{b.leaf}</p>
 								</li>
@@ -111,7 +112,7 @@
 						</ul>
 					{:else}
 						<div class="flex items-center gap-4 rounded-[12px] bg-paper p-3 md:gap-8 md:p-4">
-							<img src="/img/site/bases/{bases[0].img}.webp" alt="Seduhan dan daun {bases[0].name}" loading="lazy" class="h-auto w-36 md:w-72" />
+							<img src="/img/site/bases/{bases[0].img}.webp" srcset={srcset(`/img/site/bases/${bases[0].img}.webp`)} sizes="(min-width: 768px) 288px, 144px" alt="Seduhan dan daun {bases[0].name}" loading="lazy" class="h-auto w-36 md:w-72" />
 							<div>
 								<h2 class="font-display text-[15px] font-medium uppercase leading-5 tracking-[0.32em] text-forest">{c}</h2>
 								<p class="mt-1 text-[13px] leading-[18px] text-ink-muted">{c === 'Fresh Drink' ? `${bases[0].name}, ${bases[0].leaf}` : bases[0].leaf}</p>
@@ -119,8 +120,8 @@
 						</div>
 					{/if}
 					<ul class="grid gap-x-3 gap-y-7 md:gap-x-5 md:gap-y-9 {c === 'Fresh Drink' ? 'grid-cols-3' : 'grid-cols-2 md:grid-cols-3'}">
-						{#each list as d (d.slug)}
-							<li><DrinkCard drink={d} showBase={c === 'Milk Tea'} compact={c === 'Fresh Drink'} /></li>
+						{#each list as d, i (d.slug)}
+							<li><DrinkCard drink={d} showBase={c === 'Milk Tea'} compact={c === 'Fresh Drink'} eager={ci === 0 && i < 2} /></li>
 						{/each}
 					</ul>
 				</section>

@@ -28,7 +28,7 @@
 		<div class="relative z-10 lg:col-span-6">
 			{#if promo.ribbon}
 				<a href={waLink(promo.message)} target="_blank" rel="noopener" data-hero-in class="group inline-flex items-center gap-2 rounded-full bg-sage-soft py-1.5 pl-1.5 pr-4 text-[13px] font-semibold text-forest">
-					<span class="rounded-full bg-forest px-2.5 py-1 text-[11px] uppercase tracking-wider text-gold">Promo</span>
+					<span class="rounded-full bg-deep-forest px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-gold">Promo</span>
 					{promo.ribbon}
 					<ArrowRight size={14} class="transition-transform group-hover:translate-x-0.5" />
 				</a>
@@ -73,7 +73,7 @@
 				</div>
 			</div>
 			<div data-float class="absolute -bottom-5 right-3 flex items-center gap-3 rounded-[18px] bg-white p-3 pr-5 shadow-[0_24px_60px_-20px_rgba(20,63,49,.45)] md:-right-4">
-				<img src="/img/cup-cream-render.webp" alt="" class="size-14 rounded-[12px] bg-cream-raised object-cover object-[50%_46%]" />
+				<img src="/img/cup-cream-render@160.webp" alt="" width="56" height="56" class="size-14 rounded-[12px] bg-cream-raised object-cover object-[50%_46%]" />
 				<div>
 					<p class="flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-sage-text"><Sparkles size={12} />Harga jual</p>
 					<p class="text-[20px] font-extrabold tracking-tight text-ink">Rp 12–16 rb<span class="text-[13px] font-medium text-ink-muted"> /cup</span></p>

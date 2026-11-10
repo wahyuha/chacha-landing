@@ -35,6 +35,8 @@ Menu names, prices and tea groupings follow the printed menu and live in `src/li
 
 `node scripts/site-assets.mjs [drinks|bases|teas|photos|logos]` builds the brand site's images from `assets-src/site/` into `static/img/site/`.
 
+`node scripts/responsive.mjs` then makes smaller copies (`name@480.webp` and so on) of the larger images and lists them in `src/lib/img-sizes.json`. Components use `srcset()` from `$lib/img` so phones download a copy that fits the screen. Run it again whenever you replace one of the images it lists.
+
 - **Drinks and tea shots** are sliced from the printed menu (`menu.webp`) and enlarged, so they will look soft on large screens. Replace the source with the original artwork when available.
 - **Tea photos**: the raw photos are masked by hand-traced outlines (`TEA_MASKS` in the script) and placed on one shared ground.
 

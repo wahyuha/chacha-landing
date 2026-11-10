@@ -5,6 +5,7 @@
 	import Mountains from './Mountains.svelte';
 	import Eyebrow from './Eyebrow.svelte';
 	import { reveal } from '$lib/motion';
+	import { srcset } from '$lib/img';
 	import type { Variant } from '$lib/cup/texture';
 
 	let section: HTMLElement;
@@ -97,7 +98,7 @@
 					<Scene {variant} {progress} {pointer} />
 				</Canvas>
 			{:else}
-				<img src={variant === 'forest' ? '/img/cup-render.webp' : '/img/cup-cream-render.webp'} alt="" class="absolute inset-0 m-auto h-[80%] w-auto object-contain" loading="lazy" />
+				<img src={variant === 'forest' ? '/img/cup-render.webp' : '/img/cup-cream-render.webp'} srcset={srcset(variant === 'forest' ? '/img/cup-render.webp' : '/img/cup-cream-render.webp')} sizes="(min-width: 1024px) 30vw, 60vw" alt="" class="absolute inset-0 m-auto h-[80%] w-auto object-contain" loading="lazy" />
 			{/if}
 		</div>
 	</div>

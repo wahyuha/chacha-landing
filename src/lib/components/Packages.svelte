@@ -6,6 +6,7 @@
 	import Eyebrow from './Eyebrow.svelte';
 	import { offers, rupiah, waLink } from '$lib/data';
 	import { reducedMotion, reveal } from '$lib/motion';
+	import { srcset } from '$lib/img';
 
 	let active = $state(1);
 	const offer = $derived(offers[active]);
@@ -114,6 +115,8 @@
 						{#each views as v, i}
 							<img
 								src={v.src}
+								srcset={srcset(v.src)}
+								sizes="(min-width: 1024px) 45vw, 90vw"
 								alt=""
 								draggable="false"
 								class="view pointer-events-none absolute bottom-[17%] left-1/2 max-h-[70%] w-auto max-w-[88%] object-contain {view === i ? 'on' : ''}"
@@ -136,8 +139,8 @@
 							<span class="absolute right-[17%] top-[58%] rounded-full bg-deep-forest px-2.5 py-0.5 text-[11px] font-bold tracking-wider text-gold" in:fade={{ delay: 400 }}>80 cm</span>
 						{/if}
 						<!-- foreground cups -->
-						<img src="/img/cut/cup-forest-front.webp" alt="" class="float pointer-events-none absolute bottom-[6%] left-[5%] h-[30%] w-auto drop-shadow-[0_20px_20px_rgba(0,0,0,.45)]" style={layer(2)} />
-						<img src="/img/cut/cup-clear.webp" alt="" class="float pointer-events-none absolute bottom-[5%] right-[6%] h-[28%] w-auto drop-shadow-[0_20px_20px_rgba(0,0,0,.4)]" style="{layer(2.2)};animation-delay:-2s" />
+						<img src="/img/cut/cup-forest-front.webp" srcset={srcset('/img/cut/cup-forest-front.webp')} sizes="(min-width: 1024px) 120px, 64px" alt="" class="float pointer-events-none absolute bottom-[6%] left-[5%] h-[30%] w-auto drop-shadow-[0_20px_20px_rgba(0,0,0,.45)]" style={layer(2)} />
+						<img src="/img/cut/cup-clear.webp" srcset={srcset('/img/cut/cup-clear.webp')} sizes="(min-width: 1024px) 120px, 64px" alt="" class="float pointer-events-none absolute bottom-[5%] right-[6%] h-[28%] w-auto drop-shadow-[0_20px_20px_rgba(0,0,0,.4)]" style="{layer(2.2)};animation-delay:-2s" />
 					</div>
 					<!-- view switcher -->
 					<div class="absolute left-4 top-4 flex items-center gap-1 rounded-full bg-black/25 p-1 backdrop-blur" role="tablist" aria-label="Sudut booth">
@@ -151,6 +154,8 @@
 						{#each cluster as c, i}
 							<img
 								src="/img/kit/{c.id}.webp"
+								srcset={srcset(`/img/kit/${c.id}.webp`)}
+								sizes="(min-width: 1024px) 160px, 110px"
 								alt=""
 								draggable="false"
 								class="pointer-events-none absolute w-auto -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,.4)]"

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Eyebrow from './Eyebrow.svelte';
 	import { reveal, splitWords } from '$lib/motion';
+	import { srcset } from '$lib/img';
 
 	// Schematic only: circles show mitra areas that never overlap. Two distances, two kinds of area.
 	const areas = [
@@ -31,9 +32,9 @@
 	];
 
 	const posters = [
-		{ src: '/img/site/poster-matcha-640.webp', cls: '-rotate-6 translate-x-3 translate-y-2' },
-		{ src: '/img/site/poster-layers-640.webp', cls: 'z-10 -translate-y-1' },
-		{ src: '/img/site/poster-peach-640.webp', cls: 'rotate-6 -translate-x-3 translate-y-2' }
+		{ src: '/img/site/poster-matcha-1200.webp', cls: '-rotate-6 translate-x-3 translate-y-2' },
+		{ src: '/img/site/poster-layers-1200.webp', cls: 'z-10 -translate-y-1' },
+		{ src: '/img/site/poster-peach-1200.webp', cls: 'rotate-6 -translate-x-3 translate-y-2' }
 	];
 </script>
 
@@ -100,7 +101,7 @@
 				<p class="mt-3 text-[16px] leading-relaxed text-ink-muted">Akun jualanmu tetap terlihat rapi, walau kamu tidak punya desainer.</p>
 				<div class="mt-7 grid grid-cols-3 items-end px-1 sm:mt-auto sm:pt-7" aria-hidden="true">
 					{#each posters as p}
-						<img src={p.src} alt="" loading="lazy" width="640" height="804" class="h-auto w-full rounded-[10px] shadow-[0_18px_36px_-18px_rgba(15,48,43,.6)] {p.cls}" />
+						<img src={p.src} srcset={srcset(p.src)} sizes="(min-width: 1024px) 180px, 30vw" alt="" loading="lazy" width="640" height="804" class="h-auto w-full rounded-[10px] shadow-[0_18px_36px_-18px_rgba(15,48,43,.6)] {p.cls}" />
 					{/each}
 				</div>
 			</article>

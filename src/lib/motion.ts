@@ -51,11 +51,12 @@ export function reveal(node: HTMLElement, opts: { y?: number; stagger?: number }
 	if (reducedMotion()) return;
 	const items = node.querySelectorAll<HTMLElement>('[data-reveal]');
 	const targets = items.length ? Array.from(items) : [node];
-	gsap.set(targets, { y: opts.y ?? 36, autoAlpha: 0 });
+	// Opacity only: visibility:hidden would drop headings from screen readers until scrolled to.
+	gsap.set(targets, { y: opts.y ?? 36, opacity: 0 });
 	const stop = onceVisible(node, () =>
 		gsap.to(targets, {
 			y: 0,
-			autoAlpha: 1,
+			opacity: 1,
 			duration: 1.1,
 			ease: 'power3.out',
 			stagger: opts.stagger ?? 0.09,

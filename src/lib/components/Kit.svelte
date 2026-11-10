@@ -7,6 +7,7 @@
 	import { kitItems, kitExtras } from '$lib/data';
 	import { reducedMotion, reveal } from '$lib/motion';
 	import { rng } from '$lib/art';
+	import { srcset } from '$lib/img';
 
 	// "Buka kotaknya": on desktop the equipment starts as a messy pile around the booth and snaps
 	// into a knolling flat-lay as the reader scrolls. On phones it is a plain staggered grid.
@@ -69,7 +70,7 @@
 </script>
 
 {#snippet obj(id: string, name: string)}
-	<img data-obj src="/img/kit/{id}.webp" alt={name} loading="lazy" draggable="false" class="obj pointer-events-none max-h-full max-w-full object-contain" />
+	<img data-obj src="/img/kit/{id}.webp" srcset={srcset(`/img/kit/${id}.webp`)} sizes="(min-width: 1024px) 160px, 110px" alt={name} loading="lazy" draggable="false" class="obj pointer-events-none max-h-full max-w-full object-contain" />
 {/snippet}
 
 <section bind:this={section} id="isi-paket" class="relative overflow-hidden bg-cream py-20 lg:h-[100svh] lg:min-h-[680px] lg:py-0">
@@ -88,7 +89,7 @@
 				<p class="pb-1 text-[12px] font-semibold uppercase leading-tight tracking-[0.14em] text-ink-muted">item<br />peralatan</p>
 			</div>
 			<figure data-booth class="relative mt-6 flex h-[280px] min-h-0 flex-col items-center justify-end rounded-[24px] bg-[radial-gradient(70%_60%_at_50%_75%,#f3ece0,transparent)] lg:h-auto lg:flex-1">
-				<img src="/img/cut/booth-front.webp" alt="Booth Chacha tampak depan" class="booth min-h-0 w-auto max-w-full flex-1 object-contain object-bottom" loading="lazy" />
+				<img src="/img/cut/booth-front.webp" srcset={srcset('/img/cut/booth-front.webp')} sizes="(min-width: 1024px) 30vw, 90vw" alt="Booth Chacha tampak depan" class="booth min-h-0 w-auto max-w-full flex-1 object-contain object-bottom" loading="lazy" />
 				<figcaption class="mt-2 text-center text-[12.5px] text-ink-muted"><strong class="text-ink">+ Booth 110 × 55 × 80 cm</strong> di Paket Lengkap</figcaption>
 			</figure>
 		</div>

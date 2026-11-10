@@ -7,6 +7,7 @@
 	import DrinkCard from '$lib/components/DrinkCard.svelte';
 	import { SITE_URL, categories, drinks, orderLinks, outlets, rupiah, teas, waLink } from '$lib/data';
 	import { reveal } from '$lib/motion';
+	import { srcset } from '$lib/img';
 
 	const title = 'Chacha | Milk Tea & Fresh Drink';
 	const description = 'Milk tea, matcha, dan fresh drink dari Chacha, mulai Rp 12.000. Lihat menu lengkapnya dan cari outlet terdekat.';
@@ -47,7 +48,7 @@
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<link rel="canonical" href={url} />
-	<link rel="preload" as="image" href="/img/site/duo-1200.webp" imagesrcset="/img/site/duo-640.webp 640w, /img/site/duo-1200.webp 1200w" imagesizes="(min-width: 1024px) 50vw, 100vw" fetchpriority="high" />
+	<link rel="preload" as="image" href="/img/site/duo-1200.webp" imagesrcset={srcset('/img/site/duo-1200.webp')} imagesizes="(min-width: 1024px) 50vw, 100vw" fetchpriority="high" />
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="id_ID" />
 	<meta property="og:title" content={title} />
@@ -85,7 +86,7 @@
 			<div class="arch-right order-1 h-[clamp(380px,56vw,720px)] overflow-hidden lg:order-2">
 				<img
 					src="/img/site/duo-1200.webp"
-					srcset="/img/site/duo-640.webp 640w, /img/site/duo-1200.webp 1200w"
+					srcset={srcset('/img/site/duo-1200.webp')}
 					sizes="(min-width: 1024px) 50vw, 100vw"
 					alt="Cup hijau Chacha dan cup bening berisi teh di atas balok kayu, dengan pegunungan berkabut di belakangnya"
 					fetchpriority="high"
@@ -117,7 +118,7 @@
 	<section class="py-14 md:py-20">
 		<div class="-mx-0 flex gap-3 overflow-x-auto px-5 [scrollbar-width:none] md:mx-auto md:grid md:max-w-[1240px] md:grid-cols-2 md:gap-6 md:overflow-visible md:px-10">
 			<figure class="flex w-[78vw] max-w-[340px] shrink-0 flex-col gap-4 md:w-auto md:max-w-none">
-				<img src="/img/site/poster-peach-1200.webp" srcset="/img/site/poster-peach-640.webp 640w, /img/site/poster-peach-1200.webp 1200w" sizes="(min-width: 768px) 50vw, 78vw" width="1200" height="1508" alt="Poster Peach Oolong Milk Tea: cup hijau Chacha di samping buah peach" loading="lazy" class="h-auto w-full rounded-[24px]" />
+				<img src="/img/site/poster-peach-1200.webp" srcset={srcset('/img/site/poster-peach-1200.webp')} sizes="(min-width: 768px) 50vw, 78vw" width="1200" height="1508" alt="Poster Peach Oolong Milk Tea: cup hijau Chacha di samping buah peach" loading="lazy" class="h-auto w-full rounded-[24px]" />
 				<figcaption class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
 					<span>
 						<a href="/menu" class="font-display text-[22px] font-medium leading-7 text-forest">{peach.name}</a>
@@ -127,7 +128,7 @@
 				</figcaption>
 			</figure>
 			<figure class="flex w-[78vw] max-w-[340px] shrink-0 flex-col gap-4 md:w-auto md:max-w-none">
-				<img src="/img/site/poster-matcha-1200.webp" srcset="/img/site/poster-matcha-640.webp 640w, /img/site/poster-matcha-1200.webp 1200w" sizes="(min-width: 768px) 50vw, 78vw" width="1200" height="1508" alt="Poster 100% Pure Matcha: minuman matcha berlapis di atas tatakan kayu" loading="lazy" class="h-auto w-full rounded-[24px]" />
+				<img src="/img/site/poster-matcha-1200.webp" srcset={srcset('/img/site/poster-matcha-1200.webp')} sizes="(min-width: 768px) 50vw, 78vw" width="1200" height="1508" alt="Poster 100% Pure Matcha: minuman matcha berlapis di atas tatakan kayu" loading="lazy" class="h-auto w-full rounded-[24px]" />
 				<figcaption>
 					<a href="/menu#matcha" class="font-display text-[22px] font-medium leading-7 text-forest">Matcha</a>
 					<span class="block text-[14px] leading-[22px] text-ink-muted">Made for a brighter day</span>
@@ -146,7 +147,7 @@
 			<ul class="-mx-5 flex gap-3 overflow-x-auto px-5 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-10 md:overflow-visible md:px-0 lg:grid-cols-3">
 				{#each teas as t}
 					<li class="flex w-72 shrink-0 flex-col gap-2.5 md:w-auto">
-						<img src="/img/site/teas/{t.img}.webp" alt="Secangkir seduhan dan daun {t.name}" width="1200" height="800" loading="lazy" class="aspect-[3/2] h-auto w-full rounded-[12px] object-cover" />
+						<img src="/img/site/teas/{t.img}.webp" srcset={srcset(`/img/site/teas/${t.img}.webp`)} sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 288px" alt="Secangkir seduhan dan daun {t.name}" width="1200" height="800" loading="lazy" class="aspect-[3/2] h-auto w-full rounded-[12px] object-cover" />
 						<h3 class="mt-1 font-display text-[21px] font-medium leading-7 text-forest md:text-[24px] md:leading-[30px]">{t.name}</h3>
 						<p class="text-[14px] leading-[22px] text-ink-muted md:text-[15px] md:leading-6">{t.desc}</p>
 					</li>
@@ -158,7 +159,7 @@
 	<!-- Inside the cup -->
 	<section class="py-14 md:py-20">
 		<div class="wrap grid items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-14">
-			<img src="/img/site/poster-layers-1200.webp" srcset="/img/site/poster-layers-640.webp 640w, /img/site/poster-layers-1200.webp 1200w" sizes="(min-width: 1024px) 42vw, 100vw" width="1200" height="1697" alt="Poster Layers of Flavor: potongan gelas memperlihatkan creamy topping, es batu, fresh milk, dan premium tea" loading="lazy" class="h-auto w-full max-w-[540px] rounded-[24px]" />
+			<img src="/img/site/poster-layers-1200.webp" srcset={srcset('/img/site/poster-layers-1200.webp')} sizes="(min-width: 1024px) 42vw, 100vw" width="1200" height="1697" alt="Poster Layers of Flavor: potongan gelas memperlihatkan creamy topping, es batu, fresh milk, dan premium tea" loading="lazy" class="h-auto w-full max-w-[540px] rounded-[24px]" />
 			<div class="flex flex-col gap-7" use:reveal>
 				<div class="flex flex-col gap-3" data-reveal>
 					<p class="label text-sage-text">Di dalam gelas</p>
@@ -195,7 +196,7 @@
 				<p class="max-w-[44ch] text-[17px] leading-7 text-mist md:text-[18px] md:leading-[30px]" data-reveal>Good tea brings people closer. Jadi pesan dua: satu buat kamu, satu buat orang yang lagi kamu kangenin.</p>
 			</div>
 			<div class="arch-left aspect-[1.08] overflow-hidden">
-				<img src="/img/site/hands.webp" alt="Dua tangan memegang cup hijau Chacha" width="1200" height="1111" loading="lazy" class="size-full object-cover" />
+				<img src="/img/site/hands.webp" srcset={srcset('/img/site/hands.webp')} sizes="(min-width: 1024px) 45vw, 100vw" alt="Dua tangan memegang cup hijau Chacha" width="1200" height="1111" loading="lazy" class="size-full object-cover" />
 			</div>
 		</div>
 	</section>
@@ -245,7 +246,7 @@
 					<p class="max-w-[44ch]">Booth, alat, dan bahan baku dikirim ke lokasimu. Mulai Rp 4,5 juta, tanpa royalti.</p>
 					<a href="/kemitraan" class="btn btn-outline w-full text-forest sm:w-auto">Lihat paket kemitraan</a>
 				</div>
-				<img src="/img/cut/booth-front.webp" alt="Booth Chacha tampak depan" loading="lazy" class="mx-auto h-auto w-full max-w-[440px]" />
+				<img src="/img/cut/booth-front.webp" srcset={srcset('/img/cut/booth-front.webp')} sizes="(min-width: 640px) 440px, 80vw" alt="Booth Chacha tampak depan" loading="lazy" class="mx-auto h-auto w-full max-w-[440px]" />
 			</div>
 		</div>
 	</section>
